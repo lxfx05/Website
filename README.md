@@ -28,4 +28,4 @@ Hai domande, suggerimenti o vuoi collaborare? Contattami qui:
 
 *📄 Licenza*
 
-Distribuito sotto licenza MIT. Vedi [LICENSE](https://github.com/lxfx05/Web-resumer/blob/main/LICENSE)per i dettagli.
+Distribuito sotto licenza MIT. Vedi [LICENSE](https://github.com/lxfx05/Website/blob/main/LICENSE) per i dettagli.
