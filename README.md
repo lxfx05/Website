@@ -1,7 +1,7 @@
 
 # Web Resumer
 
-🧾 Web Resumer è un'app semplice e leggera usata per visualizzare il  mio portfolio online. Costruita con HTML, CSS e JavaScript, è pensata per essere facilmente pronta all'uso.
+🧾 Web Resumer è un'app semplice e leggera usata per visualizzare il  mio portfolio online. Costruita con HTML, CSS e JavaScript unificata , è pensata per essere facilmente pronta all'uso.
 
 ## ✨ Funzionalità
 
@@ -14,9 +14,6 @@
 
 ```
 ├── index.html
-├── style.css
-└── script.js
-
 ```
 
 *📬 Contatti*
