@@ -30,13 +30,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; transition: background 0.4s ease; }
 
-        /* --- UI UTILS --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .spacer { height: 120px; } /* Spazio tra le sezioni */
+        .spacer { height: 120px; }
 
-        /* --- HEADER & HERO --- */
         .top-controls { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.5rem; }
         .brand-name span { color: var(--primary); }
@@ -46,7 +44,6 @@
         .hero-circle { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 25px; border: 6px solid var(--card-bg); box-shadow: var(--shadow); overflow: hidden; }
         .hero-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- EXPANDING CARDS --- */
         .main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .card { background: var(--card-bg); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); overflow: hidden; cursor: pointer; border: 1px solid rgba(0,0,0,0.03); max-height: 110px; }
         .card:hover { max-height: 400px; transform: translateY(-5px); }
@@ -55,7 +52,6 @@
         .card-content { opacity: 0; transition: opacity 0.4s ease; color: var(--text-sec); padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.05); }
         .card:hover .card-content { opacity: 1; }
 
-        /* --- CONTACT OPTIONS --- */
         .contact-selection { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
         .option-box { background: var(--card-bg); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
         .option-box h3 { margin-bottom: 20px; font-family: 'Playfair Display'; font-size: 1.8rem; }
@@ -64,7 +60,7 @@
         .btn-wa { background: #25D366; }
         
         .repo-select { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.1); margin: 15px 0; background: var(--bg); color: var(--text-main); }
-        .input-name { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 10px; background: var(--bg); }
+        .input-name { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 10px; background: var(--bg); color: var(--text-main); }
 
         @media (max-width: 850px) { .contact-selection { grid-template-columns: 1fr; } }
     </style>
@@ -88,63 +84,147 @@
     <main class="container">
         <section class="hero reveal">
             <div class="hero-circle"><img src="https://i.ibb.co/GfYGBJDz/1000064539-Nero-AI-Image-Upscaler-Photo-Face.jpg"></div>
-            <h1 class="hero-h1" id="t-hero">Software Engineering & AI</h1>
-            <p class="hero-p" id="d-hero">Architetture stabili e intelligenza applicata.</p>
+            <h1 id="t-hero-h1">Software Engineering & AI</h1>
+            <p id="t-hero-p">Architetture stabili e intelligenza applicata.</p>
         </section>
 
         <section class="main-grid">
             <div class="card reveal">
-                <div class="card-header"><i class="fas fa-brain"></i><h3>Machine Learning</h3></div>
-                <div class="card-content">Integrazione LLM e modelli predittivi per automazione industriale.</div>
+                <div class="card-header"><i class="fas fa-brain"></i><h3 id="t-card1-h">Machine Learning</h3></div>
+                <div class="card-content" id="t-card1-c">Integrazione LLM e modelli predittivi per automazione industriale.</div>
             </div>
             <div class="card reveal">
-                <div class="card-header"><i class="fas fa-terminal"></i><h3>Unix & Security</h3></div>
-                <div class="card-content">Esperto Arch Linux e NixOS. Hardening di sistemi e cloud security.</div>
+                <div class="card-header"><i class="fas fa-terminal"></i><h3 id="t-card2-h">Unix & Security</h3></div>
+                <div class="card-content" id="t-card2-c">Esperto Arch Linux e NixOS. Hardening di sistemi e cloud security.</div>
             </div>
             <div class="card reveal">
-                <div class="card-header"><i class="fas fa-code"></i><h3>Full-Stack</h3></div>
-                <div class="card-content">Sviluppo Next.js e Vite con ottimizzazione SEO e performance UX.</div>
+                <div class="card-header"><i class="fas fa-code"></i><h3 id="t-card3-h">Full-Stack</h3></div>
+                <div class="card-content" id="t-card3-c">Sviluppo Next.js e Vite con ottimizzazione SEO e performance UX.</div>
             </div>
         </section>
 
         <div class="spacer"></div>
 
         <section id="contact" class="reveal">
-            <h2 style="text-align: center; font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Contact Options</h2>
-            <p style="text-align: center; color: var(--text-sec); margin-bottom: 40px;">Scegli come metterti in contatto con me</p>
+            <h2 id="t-contact-h" style="text-align: center; font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Contact Options</h2>
+            <p id="t-contact-p" style="text-align: center; color: var(--text-sec); margin-bottom: 40px;">Scegli come metterti in contatto con me</p>
             
             <div class="contact-selection">
                 <div class="option-box">
                     <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 15px;"></i>
-                    <h3>WhatsApp</h3>
-                    <p>Inviami un messaggio... Quale opzione vuoi scegliere?</p>
-                    <button class="btn btn-wa" onclick="sendWA('Ho un\'idea per un progetto... Mi collego con te e la spiego')">
-                        Idea Progetto
-                    </button>
+                    <h3 id="t-wa-h">WhatsApp</h3>
+                    <p id="t-wa-p">Inviami un messaggio... Quale opzione vuoi scegliere?</p>
+                    <button class="btn btn-wa" id="t-wa-btn" onclick="sendWA()">Idea Progetto</button>
                 </div>
 
                 <div class="option-box">
                     <i class="fab fa-github" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>Repository & Mail</h3>
-                    <p>Ho un miglioramento per la tua repository:</p>
+                    <h3 id="t-mail-h">Repository & Mail</h3>
+                    <p id="t-mail-p">Ho un miglioramento per la tua repository:</p>
                     
                     <select id="repoList" class="repo-select">
-                        <option>Caricamento repository...</option>
+                        <option>Loading...</option>
                     </select>
                     
                     <input type="text" id="userName" class="input-name" placeholder="Il tuo nome">
-                    <button class="btn" onclick="sendMail()">Invia Proposta Email</button>
+                    <button class="btn" id="t-mail-btn" onclick="sendMail()">Invia Proposta Email</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer style="padding: 80px; text-align: center; opacity: 0.6;">
-        <p>© 2026 Luca Finaldi • Syncing GitHub every 2m</p>
+        <p id="t-footer">© 2026 Luca Finaldi • Syncing GitHub every 2m</p>
     </footer>
 
     <script>
-        // --- GITHUB REPO FETCH (lxfx05) ---
+        const translations = {
+            it: {
+                heroH1: "Software Engineering & AI", heroP: "Architetture stabili e intelligenza applicata.",
+                c1h: "Machine Learning", c1c: "Integrazione LLM e modelli predittivi per automazione industriale.",
+                c2h: "Unix & Security", c2c: "Esperto Arch Linux e NixOS. Hardening di sistemi e cloud security.",
+                c3h: "Full-Stack", c3c: "Sviluppo Next.js e Vite con ottimizzazione SEO e performance UX.",
+                conH: "Opzioni di Contatto", conP: "Scegli come metterti in contatto con me",
+                waH: "WhatsApp", waP: "Inviami un messaggio... Quale opzione vuoi scegliere?", waB: "Idea Progetto",
+                maH: "Repository & Mail", maP: "Ho un miglioramento per la tua repository:", maB: "Invia Proposta Email",
+                namePh: "Il tuo nome", foot: "© 2026 Luca Finaldi • Sync GitHub ogni 2m",
+                waMsg: "Ho un'idea per un progetto... Mi collego con te e la spiego",
+                mailSub: "Miglioramento per ", mailBody: "Ciao Luca Finaldi, sono {name} e ho notato il tuo GitHub e devo dirti che ho un'idea per migliorare la repository {repo}..."
+            },
+            en: {
+                heroH1: "Software Engineering & AI", heroP: "Stable architectures and applied intelligence.",
+                c1h: "Machine Learning", c1c: "LLM integration and predictive models for industrial automation.",
+                c2h: "Unix & Security", c2c: "Arch Linux and NixOS expert. System hardening and cloud security.",
+                c3h: "Full-Stack", c3c: "Next.js and Vite development with SEO and UX optimization.",
+                conH: "Contact Options", conP: "Choose how to get in touch with me",
+                waH: "WhatsApp", waP: "Send me a message... What option do you choose?", waB: "Project Idea",
+                maH: "Repository & Mail", maP: "I have an improvement for your repository:", maB: "Send Email Proposal",
+                namePh: "Your name", foot: "© 2026 Luca Finaldi • Syncing GitHub every 2m",
+                waMsg: "I have a project idea... I'm reaching out to explain it to you",
+                mailSub: "Improvement for ", mailBody: "Hi Luca Finaldi, I'm {name} and I saw your GitHub. I have an idea to improve the {repo} repository..."
+            },
+            ru: {
+                heroH1: "Программная инженерия и ИИ", heroP: "Стабильные архитектуры и прикладной интеллект.",
+                c1h: "Машинное обучение", c1c: "Интеграция LLM и прогнозные модели для промышленной автоматизации.",
+                c2h: "Unix и безопасность", c2c: "Эксперт по Arch Linux и NixOS. Защита систем и облачная безопасность.",
+                c3h: "Full-Stack", c3c: "Разработка на Next.js и Vite с оптимизацией SEO и UX.",
+                conH: "Варианты связи", conP: "Выберите способ связи со мной",
+                waH: "WhatsApp", waP: "Отправьте мне сообщение... Какой вариант вы выберете?", waB: "Идея проекта",
+                maH: "Репозиторий и почта", maP: "У меня есть предложение по улучшению вашего репозитория:", maB: "Отправить предложение",
+                namePh: "Ваше имя", foot: "© 2026 Лука Финальди • Синхронизация GitHub каждые 2 мин",
+                waMsg: "У меня есть идея проекта... Я связываюсь с вами, чтобы обсудить её",
+                mailSub: "Улучшение для ", mailBody: "Привет, Лука Финальди, я {name}. Я видел ваш GitHub, и у меня есть идея по улучшению репозитория {repo}..."
+            },
+            zh: {
+                heroH1: "软件工程与人工智能", heroP: "稳定架构与应用智能。",
+                c1h: "机器学习", c1c: "工业自动化的 LLM 集成和预测模型。",
+                c2h: "Unix 与安全", c2c: "Arch Linux 和 NixOS 专家。系统加固和云安全。",
+                c3h: "全栈开发", c3c: "使用 Next.js 和 Vite 进行 SEO 和 UX 优化开发。",
+                conH: "联系方式", conP: "选择与我联系的方式",
+                waH: "WhatsApp", waP: "给我发消息... 你想选择哪个选项？", waB: "项目构思",
+                maH: "代码库与邮件", maP: "我对您的代码库有改进建议：", maB: "发送电子邮件建议",
+                namePh: "您的名字", foot: "© 2026 Luca Finaldi • 每2分钟同步一次 GitHub",
+                waMsg: "我有一个项目想法... 我想联系您并详细说明",
+                mailSub: "改进建议：", mailBody: "你好 Luca Finaldi，我是 {name}。我在 GitHub 上看到了你的项目，我有一个关于改进 {repo} 的想法..."
+            },
+            de: {
+                heroH1: "Software Engineering & KI", heroP: "Stabile Architekturen und angewandte Intelligenz.",
+                c1h: "Maschinelles Lernen", c1c: "LLM-Integration und prädiktive Modelle für die industrielle Automatisierung.",
+                c2h: "Unix & Sicherheit", c2c: "Experte für Arch Linux und NixOS. Systemhärtung und Cloud-Sicherheit.",
+                c3h: "Full-Stack", c3c: "Next.js- und Vite-Entwicklung mit SEO- und UX-Optimierung.",
+                conH: "Kontaktoptionen", conP: "Wählen Sie, wie Sie mich kontaktieren möchten",
+                waH: "WhatsApp", waP: "Schreib mir eine Nachricht... Welche Option wählst du?", waB: "Projektidee",
+                maH: "Repository & Mail", maP: "Ich habe eine Verbesserung für Ihr Repository:", maB: "E-Mail-Vorschlag senden",
+                namePh: "Ihr Name", foot: "© 2026 Luca Finaldi • GitHub-Sync alle 2 Min.",
+                waMsg: "Ich habe eine Projektidee... Ich melde mich bei dir, um sie zu erklären",
+                mailSub: "Verbesserung für ", mailBody: "Hallo Luca Finaldi, ich bin {name}. Ich habe dein GitHub gesehen und habe eine Idee zur Verbesserung des Repositories {repo}..."
+            }
+        };
+
+        function updateLanguage() {
+            const lang = document.getElementById('langSelect').value;
+            const t = translations[lang];
+            
+            document.getElementById('t-hero-h1').textContent = t.heroH1;
+            document.getElementById('t-hero-p').textContent = t.heroP;
+            document.getElementById('t-card1-h').textContent = t.c1h;
+            document.getElementById('t-card1-c').textContent = t.c1c;
+            document.getElementById('t-card2-h').textContent = t.c2h;
+            document.getElementById('t-card2-c').textContent = t.c2c;
+            document.getElementById('t-card3-h').textContent = t.c3h;
+            document.getElementById('t-card3-c').textContent = t.c3c;
+            document.getElementById('t-contact-h').textContent = t.conH;
+            document.getElementById('t-contact-p').textContent = t.conP;
+            document.getElementById('t-wa-h').textContent = t.waH;
+            document.getElementById('t-wa-p').textContent = t.waP;
+            document.getElementById('t-wa-btn').textContent = t.waB;
+            document.getElementById('t-mail-h').textContent = t.maH;
+            document.getElementById('t-mail-p').textContent = t.maP;
+            document.getElementById('t-mail-btn').textContent = t.maB;
+            document.getElementById('userName').placeholder = t.namePh;
+            document.getElementById('t-footer').textContent = t.foot;
+        }
+
         async function fetchRepos() {
             const select = document.getElementById('repoList');
             try {
@@ -158,39 +238,43 @@
                     select.appendChild(opt);
                 });
             } catch (e) {
-                select.innerHTML = '<option>Errore nel caricamento</option>';
+                select.innerHTML = '<option>Error loading repos</option>';
             }
         }
 
-        // Aggiorna ogni 2 minuti
-        fetchRepos();
-        setInterval(fetchRepos, 120000);
-
-        // --- CONTACT LOGIC ---
-        function sendWA(msg) {
-            const url = `https://wa.me/393924484032?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
+        function sendWA() {
+            const lang = document.getElementById('langSelect').value;
+            const msg = translations[lang].waMsg;
+            window.open(`https://wa.me/393924484032?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function sendMail() {
-            const name = document.getElementById('userName').value || "un utente";
+            const lang = document.getElementById('langSelect').value;
+            const t = translations[lang];
+            const name = document.getElementById('userName').value || (lang === 'it' ? "un utente" : "a user");
             const repo = document.getElementById('repoList').value;
-            const subject = encodeURIComponent(`Miglioramento per ${repo}`);
-            const body = encodeURIComponent(`Ciao Luca Finaldi, sono ${name} e ho notato il tuo GitHub e devo dirti che ho un'idea per migliorare la repository ${repo}...`);
+            
+            const subject = encodeURIComponent(t.mailSub + repo);
+            const body = encodeURIComponent(t.mailBody.replace('{name}', name).replace('{repo}', repo));
             
             window.location.href = `mailto:lucafinaldi18@gmail.com?subject=${subject}&body=${body}`;
         }
 
-        // --- UI LOGIC ---
+        document.getElementById('langSelect').addEventListener('change', updateLanguage);
         document.getElementById('themeToggle').addEventListener('click', () => {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.querySelector('#themeToggle i').className = isDark ? 'fas fa-moon' : 'fas fa-sun';
         });
 
         const obs = new IntersectionObserver((es) => {
             es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        fetchRepos();
+        setInterval(fetchRepos, 120000);
     </script>
 </body>
 </html>
