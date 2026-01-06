@@ -43,14 +43,24 @@
         #scrollBar { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 10px var(--accent); }
 
         section { padding: 6rem 8% 2rem; }
-        .typewriter { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 3px solid var(--accent); animation: typing 0.5s steps(20, end), blink 0.5s step-end infinite; width: fit-content; }
+        
+        /* FIX CURSORE TYPEWRITER */
+        .typewriter { 
+            display: inline-block; 
+            overflow: hidden; 
+            white-space: nowrap; 
+            border-right: 3px solid var(--accent); 
+            animation: typing 0.8s steps(20, end), blink 0.5s step-end infinite; 
+            width: fit-content;
+            padding-right: 5px; /* Spazio per il cursore */
+            max-width: 100%;
+        }
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent) } }
         
         .wave-emoji { display: inline-block; animation: wave 1.5s infinite; transform-origin: 70% 70%; margin-right: 10px; }
         @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(20deg); } 75% { transform: rotate(-15deg); } }
 
-        /* MARQUEE */
         .marquee-container { overflow: hidden; width: 100%; margin: 15px 0; }
         .marquee-content { display: flex; gap: 50px; width: max-content; align-items: center; animation: scrollL 22s linear infinite; }
         .reverse { animation: scrollR 22s linear infinite; }
@@ -58,15 +68,7 @@
         @keyframes scrollR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
         
         .logo-tech { height: 35px; }
-        /* AZIENDE SEMPRE COLORATE */
-        .logo-comp { 
-            height: 45px; 
-            max-width: 160px; 
-            object-fit: contain; 
-            filter: none !important; /* Rimosso ogni filtro */
-            opacity: 1 !important;
-            transition: transform 0.3s ease;
-        }
+        .logo-comp { height: 45px; max-width: 160px; object-fit: contain; filter: none !important; opacity: 1 !important; transition: transform 0.3s ease; }
         .logo-comp:hover { transform: scale(1.08); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
@@ -91,7 +93,7 @@
     <nav>
         <div style="font-weight: 800; font-family: 'Space Grotesk'; font-size: 1.2rem;">LUCA<span style="color:var(--accent)">.</span>F</div>
         <div class="nav-right">
-            <a href="https://github.com/lxfx05" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/lucafinaldi" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.reddit.com/u/xpfarmer05/s/Vl2ZwGTvsU" class="social-link" target="_blank"><i class="fab fa-reddit-alien"></i></a>
             <div onclick="openDeezer()" class="social-link" title="Deezer Profile"><i class="fab fa-deezer"></i></div>
             <button class="theme-btn" id="themeSwitcher"><i class="fas fa-sun"></i></button>
