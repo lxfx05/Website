@@ -2,71 +2,100 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Luca Finaldi | Systems Architect</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <style>
         :root {
             --bg: #050507; --surface: rgba(18, 18, 23, 0.85); --text: #f4f4f5; --text-dim: #9494a3;
             --accent: #3b82f6; --border: rgba(255,255,255,0.08);
             --wa-color: #28d146; --mail-color: #007aff;
+            --logo-filter: invert(1) brightness(2);
         }
 
         body.light-mode {
             --bg: #f2f2f7; --surface: rgba(255, 255, 255, 0.9); --text: #1c1c1e; --text-dim: #8e8e93;
             --accent: #007aff; --border: rgba(0,0,0,0.1);
+            --logo-filter: none; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; transition: 0.3s; overflow-x: hidden; }
+        body { background-color: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; transition: 0.3s; overflow-x: hidden; width: 100%; }
 
-        /* Barra Page View */
+        /* Barra Nav & Progress */
+        nav { height: 60px; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--surface); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 0.5px solid var(--border); }
         .progress-wrap { position: fixed; top: 60px; left: 0; width: 100%; height: 3px; background: transparent; z-index: 1001; }
         #scrollBar { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 10px var(--accent); }
 
-        nav { height: 60px; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--surface); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 0.5px solid var(--border); }
-        .nav-socials { display: flex; gap: 18px; align-items: center; }
-        .nav-socials a { color: var(--text); font-size: 1.1rem; text-decoration: none; transition: 0.2s; }
-        .nav-socials a:hover { color: var(--accent); }
+        section { padding: 2rem 6%; max-width: 1100px; margin: 0 auto; width: 100%; }
 
-        section { padding: 2rem 6%; max-width: 1100px; margin: 0 auto; }
+        /* MARQUEE EDGE-TO-EDGE SYSTEM */
+        .full-bleed-marquee {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            overflow: hidden;
+            position: relative;
+            padding: 2rem 0;
+            background: transparent;
+        }
 
+        .marquee-inner {
+            display: flex;
+            width: max-content;
+            animation: scroll 35s linear infinite;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .marquee-inner img {
+            height: 32px;
+            flex-shrink: 0;
+            filter: var(--logo-filter);
+            transition: 0.3s;
+            object-fit: contain;
+        }
+
+        /* Hero & UI Cards */
         .hero-container { padding-top: 100px; display: flex; flex-direction: column; gap: 12px; }
         .pfp-box { width: 80px; height: 80px; border-radius: 22px; overflow: hidden; border: 1px solid var(--border); }
         .pfp-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Marquee Tech */
-        .marquee { overflow: hidden; white-space: nowrap; display: flex; gap: 30px; margin: 15px 0; }
-        .marquee-inner { display: flex; gap: 40px; animation: scroll 30s linear infinite; align-items: center; }
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (min-width: 768px) {
+            .hero-container { flex-direction: row; align-items: center; gap: 30px; padding-top: 140px; }
+            .pfp-box { width: 120px; height: 120px; }
+        }
 
-        /* CTA CARD CON DESCRIZIONE CHIARA */
         .cta-card { 
             background: var(--surface); backdrop-filter: blur(20px); border: 1px solid var(--border); 
-            border-radius: 30px; padding: 2.5rem; margin: 1.5rem auto; 
-            display: flex; flex-direction: column; align-items: center; gap: 15px; 
+            border-radius: 30px; padding: 2rem; margin: 1.5rem 0; 
+            display: flex; flex-direction: column; align-items: center; gap: 20px; 
         }
-        .cta-chart-side { width: 100%; max-width: 380px; }
+        .cta-chart-side { width: 100%; max-width: 350px; }
 
-        /* Grid Progetti */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
-        .card { background: var(--surface); padding: 1.8rem; border-radius: 24px; border: 1px solid var(--border); transition: 0.3s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+        .card { background: var(--surface); padding: 1.8rem; border-radius: 24px; border: 1px solid var(--border); }
+        
         .btn-flex { display: flex; gap: 10px; margin-top: 15px; }
         .btn-p { flex: 1; padding: 12px; border-radius: 12px; background: var(--accent); color: white; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
         .btn-s { flex: 1; padding: 12px; border-radius: 12px; background: rgba(120,120,128,0.1); color: var(--text); text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem; border: 0.5px solid var(--border); }
 
-        /* Form iOS Style */
-        .contact-box { background: var(--surface); backdrop-filter: blur(25px); border-radius: 35px; border: 1px solid var(--border); padding: 2.5rem 2rem; max-width: 440px; margin: 2rem auto; }
-        .ios-input-group { margin-bottom: 12px; text-align: left; }
+        /* Contact Section */
+        .contact-box { background: var(--surface); backdrop-filter: blur(25px); border-radius: 35px; border: 1px solid var(--border); padding: 2.2rem; width: 100%; max-width: 450px; margin: 2rem auto; }
+        .ios-input-group { margin-bottom: 15px; }
         .ios-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-left: 10px; margin-bottom: 5px; display: block; }
-        input, select { width: 100%; padding: 14px; border-radius: 15px; background: rgba(120,120,128,0.12); border: none; color: var(--text); outline: none; }
-        
-        .repo-status-card { background: rgba(59, 130, 246, 0.1); border-radius: 18px; padding: 12px; margin-bottom: 15px; display: none; border: 1px solid rgba(59, 130, 246, 0.2); font-size: 0.8rem; }
-        .btn-ios { width: 100%; padding: 16px; border-radius: 18px; font-weight: 700; border: none; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        input, select { width: 100%; padding: 14px; border-radius: 15px; background: rgba(120,120,128,0.12); border: none; color: var(--text); outline: none; font-size: 1rem; }
+
+        .btn-ios { width: 100%; padding: 16px; border-radius: 18px; font-weight: 700; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
         .btn-wa { background: var(--wa-color); color: white; }
         .btn-mail { background: var(--mail-color); color: white; }
 
@@ -96,16 +125,16 @@
             </div>
         </section>
 
-        <div class="marquee reveal">
+        <div class="full-bleed-marquee reveal">
             <div class="marquee-inner" id="techMarquee"></div>
         </div>
 
         <section class="reveal">
             <div class="cta-card">
-                <div style="text-align: center;">
+                <div class="cta-info">
                     <h2 style="font-family: 'Space Grotesk'; font-size: 1.6rem; margin-bottom: 5px;">Expertise Radar</h2>
-                    <p style="font-size: 1rem; color: var(--text); font-weight: 600; max-width: 650px; line-height: 1.4;">
-                        Specializzato in <span style="color: var(--accent);">Cybersecurity</span>, Architetture <span style="color: var(--accent);">Backend</span> scalabili, interfacce <span style="color: var(--accent);">Frontend</span> moderne e integrazione di modelli <span style="color: var(--accent);">LLM AI</span>.
+                    <p style="font-size: 1rem; color: var(--text); font-weight: 600; line-height: 1.4;">
+                        Specializzato in <span style="color: var(--accent);">Cybersecurity</span>, <span style="color: var(--accent);">Backend</span> e <span style="color: var(--accent);">LLM AI</span>.
                     </p>
                 </div>
                 <div class="cta-chart-side"><canvas id="skillChart"></canvas></div>
@@ -129,68 +158,54 @@
                     <a href="https://lxfx05.github.io/Free-Ai/" target="_blank" class="btn-p">TEST</a>
                 </div>
             </div>
-            <div class="card">
-                <h3>Password Gen</h3>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 5px;">Generazione chiavi crittografiche ad alta entropia.</p>
-                <div class="btn-flex">
-                    <a href="https://github.com/lxfx05/Password/blob/main/docs/README.md" target="_blank" class="btn-s">README</a>
-                    <a href="https://password-seven-pink.vercel.app/" target="_blank" class="btn-p">TEST</a>
-                </div>
-            </div>
         </section>
-
-        <div class="marquee reveal" style="margin: 3rem 0;">
-            <div class="marquee-inner">
-                <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png" style="height:35px">
-                <img src="https://goonnet.it/storage/Main-240x92-1.webp" style="height:35px">
-                <img src="https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png" style="height:35px">
-                <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png" style="height:35px">
-                <img src="https://goonnet.it/storage/Main-240x92-1.webp" style="height:35px">
-                <img src="https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png" style="height:35px">
-            </div>
-        </div>
 
         <section id="contact" class="reveal">
             <div class="contact-box">
                 <h2 style="margin-bottom: 1.5rem; text-align: center;">Inquiry Center</h2>
                 <div class="ios-input-group">
-                    <label class="ios-label">Tipo Richiesta</label>
-                    <select id="reqType" onchange="toggleRepoUI()">
-                        <option value="new">Nuovo Progetto</option>
-                        <option value="repo">Audit Repo Esistente</option>
-                    </select>
-                </div>
-                <div id="repoWrapper" style="display:none;" class="ios-input-group">
-                    <label class="ios-label">Progetto GitHub</label>
-                    <select id="repoDrop" onchange="fetchUpdateInfo()"></select>
-                </div>
-                <div id="repoStatus" class="repo-status-card">
-                    <div style="display:flex; justify-content: space-between;"><span>Ultimo Commit:</span> <b id="commitDate" style="color:var(--accent)"></b></div>
-                    <div style="display:flex; justify-content: space-between;"><span>Ora:</span> <b id="commitTime" style="color:var(--accent)"></b></div>
-                </div>
-                <div class="ios-input-group">
                     <label class="ios-label">Tuo Nome</label>
-                    <input type="text" id="userName" placeholder="Identificativo">
+                    <input type="text" id="userName" placeholder="Nome">
                 </div>
                 <button onclick="sendMsg('wa')" class="btn-ios btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</button>
                 <button onclick="sendMsg('mail')" class="btn-ios btn-mail"><i class="fas fa-envelope"></i> Email</button>
             </div>
         </section>
+
+        <div class="full-bleed-marquee reveal" style="margin-bottom: 5rem;">
+            <div class="marquee-inner">
+                <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png">
+                <img src="https://goonnet.it/storage/Main-240x92-1.webp">
+                <img src="https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png">
+                <img src="https://itechsoftware.it/wp-content/uploads/2024/09/LogoItechTrasparente.png">
+                <img src="https://www.centroservizitotali.it/wp-content/uploads/2019/08/ProntoPro-logo-startup-jobs.png">
+                <img src="https://cdn.prod.website-files.com/64e4adc68bf2ad345ebaa83c/65f814e4f5b9b229572847e5_og-contatti.jpg">
+                <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png">
+                <img src="https://goonnet.it/storage/Main-240x92-1.webp">
+                <img src="https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png">
+                <img src="https://itechsoftware.it/wp-content/uploads/2024/09/LogoItechTrasparente.png">
+                <img src="https://www.centroservizitotali.it/wp-content/uploads/2019/08/ProntoPro-logo-startup-jobs.png">
+                <img src="https://cdn.prod.website-files.com/64e4adc68bf2ad345ebaa83c/65f814e4f5b9b229572847e5_og-contatti.jpg">
+            </div>
+        </div>
     </main>
 
     <script>
+        // Scroll Management
         window.onscroll = () => {
             let winScroll = document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('scrollBar').style.width = (winScroll / height) * 100 + "%";
-            document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 40) el.classList.add('active'); });
+            document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 30) el.classList.add('active'); });
         };
 
+        // Theme Switcher
         document.getElementById('themeSwitcher').onclick = function() {
             document.body.classList.toggle('light-mode');
             this.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
         };
 
+        // Typewriter Effect
         const roles = ["Fullstack Developer", "Security Researcher", "AI Engineer"];
         let r=0, c=0, del=false;
         function type() {
@@ -202,6 +217,7 @@
         }
         type();
 
+        // Skill Radar Chart
         new Chart(document.getElementById('skillChart'), {
             type: 'radar',
             data: {
@@ -211,41 +227,19 @@
             options: { scales: { r: { grid:{color:'rgba(255,255,255,0.05)'}, ticks:{display:false}, pointLabels:{color:'#71717a', font:{size:10}} } }, plugins: { legend: {display:false} } }
         });
 
-        async function load() {
-            const res = await fetch('https://api.github.com/users/lxfx05/repos?sort=updated');
-            const data = await res.json();
-            const d = document.getElementById('repoDrop');
-            d.innerHTML = '<option value="">-- Seleziona Repository --</option>';
-            data.forEach(repo => {
-                let opt = document.createElement('option');
-                opt.value = repo.name; opt.textContent = repo.name.toUpperCase();
-                d.appendChild(opt);
-            });
-        }
-        async function fetchUpdateInfo() {
-            const name = document.getElementById('repoDrop').value;
-            if(!name) return;
-            const res = await fetch(`https://api.github.com/repos/lxfx05/${name}`);
-            const data = await res.json();
-            const date = new Date(data.updated_at);
-            document.getElementById('commitDate').innerText = date.toLocaleDateString('it-IT');
-            document.getElementById('commitTime').innerText = date.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
-            document.getElementById('repoStatus').style.display = 'block';
-        }
-        function toggleRepoUI() {
-            document.getElementById('repoWrapper').style.display = document.getElementById('reqType').value === 'repo' ? 'block' : 'none';
-        }
-
+        // Fill Tech Icons
         const icons = ['python','js','docker','aws','bash','nextjs','react','kali','git','linux','cpp','ts'];
-        document.getElementById('techMarquee').innerHTML = icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:40px">`).join('') + icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:40px">`).join('');
+        const mTech = document.getElementById('techMarquee');
+        const nodes = icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}">`).join('');
+        mTech.innerHTML = nodes + nodes;
 
+        // Messaging
         function sendMsg(m) {
             const n = document.getElementById('userName').value || "Visitatore";
             const msg = `Ciao Luca, sono ${n}.`;
             if(m === 'wa') window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
             else window.location.href = `mailto:lucafinaldi3@gmail.com?subject=Inquiry&body=${msg}`;
         }
-        load();
     </script>
 </body>
 </html>
