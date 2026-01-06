@@ -24,7 +24,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; transition: 0.3s; overflow-x: hidden; }
 
-        /* Progress Bar Page View */
+        /* Barra Page View */
         .progress-wrap { position: fixed; top: 60px; left: 0; width: 100%; height: 3px; background: transparent; z-index: 1001; }
         #scrollBar { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 10px var(--accent); }
 
@@ -39,16 +39,20 @@
         .pfp-box { width: 80px; height: 80px; border-radius: 22px; overflow: hidden; border: 1px solid var(--border); }
         .pfp-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Marquee */
+        /* Marquee Tech */
         .marquee { overflow: hidden; white-space: nowrap; display: flex; gap: 30px; margin: 15px 0; }
         .marquee-inner { display: flex; gap: 40px; animation: scroll 30s linear infinite; align-items: center; }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* CTA CARD */
-        .cta-card { background: var(--surface); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 30px; padding: 2.5rem; margin: 1.5rem auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        /* CTA CARD CON DESCRIZIONE CHIARA */
+        .cta-card { 
+            background: var(--surface); backdrop-filter: blur(20px); border: 1px solid var(--border); 
+            border-radius: 30px; padding: 2.5rem; margin: 1.5rem auto; 
+            display: flex; flex-direction: column; align-items: center; gap: 15px; 
+        }
         .cta-chart-side { width: 100%; max-width: 380px; }
 
-        /* Cards Progetti */
+        /* Grid Progetti */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
         .card { background: var(--surface); padding: 1.8rem; border-radius: 24px; border: 1px solid var(--border); transition: 0.3s; }
         .btn-flex { display: flex; gap: 10px; margin-top: 15px; }
@@ -62,7 +66,6 @@
         input, select { width: 100%; padding: 14px; border-radius: 15px; background: rgba(120,120,128,0.12); border: none; color: var(--text); outline: none; }
         
         .repo-status-card { background: rgba(59, 130, 246, 0.1); border-radius: 18px; padding: 12px; margin-bottom: 15px; display: none; border: 1px solid rgba(59, 130, 246, 0.2); font-size: 0.8rem; }
-
         .btn-ios { width: 100%; padding: 16px; border-radius: 18px; font-weight: 700; border: none; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-wa { background: var(--wa-color); color: white; }
         .btn-mail { background: var(--mail-color); color: white; }
@@ -100,8 +103,10 @@
         <section class="reveal">
             <div class="cta-card">
                 <div style="text-align: center;">
-                    <h2 style="font-family: 'Space Grotesk'; font-size: 1.6rem; margin-bottom: 8px;">Expertise Radar</h2>
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">Ingegneria dei sistemi e sicurezza integrata.</p>
+                    <h2 style="font-family: 'Space Grotesk'; font-size: 1.6rem; margin-bottom: 5px;">Expertise Radar</h2>
+                    <p style="font-size: 1rem; color: var(--text); font-weight: 600; max-width: 650px; line-height: 1.4;">
+                        Specializzato in <span style="color: var(--accent);">Cybersecurity</span>, Architetture <span style="color: var(--accent);">Backend</span> scalabili, interfacce <span style="color: var(--accent);">Frontend</span> moderne e integrazione di modelli <span style="color: var(--accent);">LLM AI</span>.
+                    </p>
                 </div>
                 <div class="cta-chart-side"><canvas id="skillChart"></canvas></div>
             </div>
@@ -110,7 +115,7 @@
         <section class="grid reveal">
             <div class="card">
                 <h3>CodeBot-</h3>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 5px;">AI System Audit. Analisi di sicurezza tramite LLM locale.</p>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 5px;">Audit di sistema e analisi sicurezza tramite LLM locale.</p>
                 <div class="btn-flex">
                     <a href="https://github.com/lxfx05/CodeBot-Ai-" target="_blank" class="btn-s">README</a>
                     <a href="https://codebot-ai.vercel.app/" target="_blank" class="btn-p">TEST</a>
@@ -160,12 +165,12 @@
                     <select id="repoDrop" onchange="fetchUpdateInfo()"></select>
                 </div>
                 <div id="repoStatus" class="repo-status-card">
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 5px;"><span>Ultimo Commit:</span> <b id="commitDate" style="color:var(--accent)"></b></div>
-                    <div style="display:flex; justify-content: space-between;"><span>Ora aggiornamento:</span> <b id="commitTime" style="color:var(--accent)"></b></div>
+                    <div style="display:flex; justify-content: space-between;"><span>Ultimo Commit:</span> <b id="commitDate" style="color:var(--accent)"></b></div>
+                    <div style="display:flex; justify-content: space-between;"><span>Ora:</span> <b id="commitTime" style="color:var(--accent)"></b></div>
                 </div>
                 <div class="ios-input-group">
-                    <label class="ios-label">Identificativo</label>
-                    <input type="text" id="userName" placeholder="Tuo Nome">
+                    <label class="ios-label">Tuo Nome</label>
+                    <input type="text" id="userName" placeholder="Identificativo">
                 </div>
                 <button onclick="sendMsg('wa')" class="btn-ios btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</button>
                 <button onclick="sendMsg('mail')" class="btn-ios btn-mail"><i class="fas fa-envelope"></i> Email</button>
@@ -174,7 +179,6 @@
     </main>
 
     <script>
-        // Progress Page View
         window.onscroll = () => {
             let winScroll = document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -182,13 +186,11 @@
             document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 40) el.classList.add('active'); });
         };
 
-        // Theme Toggle
         document.getElementById('themeSwitcher').onclick = function() {
             document.body.classList.toggle('light-mode');
             this.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
         };
 
-        // Typewriter Professionale
         const roles = ["Fullstack Developer", "Security Researcher", "AI Engineer"];
         let r=0, c=0, del=false;
         function type() {
@@ -200,7 +202,6 @@
         }
         type();
 
-        // Chart Expertise
         new Chart(document.getElementById('skillChart'), {
             type: 'radar',
             data: {
@@ -210,7 +211,6 @@
             options: { scales: { r: { grid:{color:'rgba(255,255,255,0.05)'}, ticks:{display:false}, pointLabels:{color:'#71717a', font:{size:10}} } }, plugins: { legend: {display:false} } }
         });
 
-        // GitHub Logic lxfx05
         async function load() {
             const res = await fetch('https://api.github.com/users/lxfx05/repos?sort=updated');
             const data = await res.json();
@@ -236,7 +236,6 @@
             document.getElementById('repoWrapper').style.display = document.getElementById('reqType').value === 'repo' ? 'block' : 'none';
         }
 
-        // Tech Icons Marquee
         const icons = ['python','js','docker','aws','bash','nextjs','react','kali','git','linux','cpp','ts'];
         document.getElementById('techMarquee').innerHTML = icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:40px">`).join('') + icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:40px">`).join('');
 
