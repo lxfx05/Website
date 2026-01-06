@@ -5,222 +5,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luca Finaldi | Systems Architect</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
-            --bg: #050507; --surface: #0e0e11; --text: #f4f4f5; --text-dim: #71717a;
-            --accent: #3b82f6; --border: rgba(255,255,255,0.1);
+            --bg: #050507; --surface: rgba(18, 18, 23, 0.85); --text: #f4f4f5; --text-dim: #9494a3;
+            --accent: #3b82f6; --border: rgba(255,255,255,0.08);
+            --wa-color: #28d146; --mail-color: #007aff;
         }
 
         body.light-mode {
-            --bg: #ffffff; --surface: #f4f4f5; --text: #09090b; --text-dim: #52525b;
-            --accent: #2563eb; --border: rgba(0,0,0,0.1);
-        }
-
-        body { 
-            background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden;
-            transition: background 0.4s ease, color 0.4s ease;
+            --bg: #f2f2f7; --surface: rgba(255, 255, 255, 0.9); --text: #1c1c1e; --text-dim: #8e8e93;
+            --accent: #007aff; --border: rgba(0,0,0,0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; transition: 0.3s; overflow-x: hidden; }
 
-        nav { height: 70px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--bg); z-index: 1000; border-bottom: 1px solid var(--border); }
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .social-link { color: var(--text); font-size: 1.1rem; opacity: 0.8; transition: 0.3s; cursor: pointer; }
-        .social-link:hover { opacity: 1; color: var(--accent); }
-        .theme-btn { cursor: pointer; color: var(--text); background: none; font-size: 1.1rem; border: none; }
-
-        .progress-container { position: fixed; top: 70px; left: 0; width: 100%; height: 3px; background: var(--border); z-index: 999; }
+        /* Progress Bar Page View */
+        .progress-wrap { position: fixed; top: 60px; left: 0; width: 100%; height: 3px; background: transparent; z-index: 1001; }
         #scrollBar { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 10px var(--accent); }
 
-        section { padding: 6rem 8% 2rem; }
+        nav { height: 60px; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--surface); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 0.5px solid var(--border); }
+        .nav-socials { display: flex; gap: 18px; align-items: center; }
+        .nav-socials a { color: var(--text); font-size: 1.1rem; text-decoration: none; transition: 0.2s; }
+        .nav-socials a:hover { color: var(--accent); }
+
+        section { padding: 2rem 6%; max-width: 1100px; margin: 0 auto; }
+
+        .hero-container { padding-top: 100px; display: flex; flex-direction: column; gap: 12px; }
+        .pfp-box { width: 80px; height: 80px; border-radius: 22px; overflow: hidden; border: 1px solid var(--border); }
+        .pfp-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Marquee */
+        .marquee { overflow: hidden; white-space: nowrap; display: flex; gap: 30px; margin: 15px 0; }
+        .marquee-inner { display: flex; gap: 40px; animation: scroll 30s linear infinite; align-items: center; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* CTA CARD */
+        .cta-card { background: var(--surface); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 30px; padding: 2.5rem; margin: 1.5rem auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .cta-chart-side { width: 100%; max-width: 380px; }
+
+        /* Cards Progetti */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
+        .card { background: var(--surface); padding: 1.8rem; border-radius: 24px; border: 1px solid var(--border); transition: 0.3s; }
+        .btn-flex { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-p { flex: 1; padding: 12px; border-radius: 12px; background: var(--accent); color: white; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
+        .btn-s { flex: 1; padding: 12px; border-radius: 12px; background: rgba(120,120,128,0.1); color: var(--text); text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem; border: 0.5px solid var(--border); }
+
+        /* Form iOS Style */
+        .contact-box { background: var(--surface); backdrop-filter: blur(25px); border-radius: 35px; border: 1px solid var(--border); padding: 2.5rem 2rem; max-width: 440px; margin: 2rem auto; }
+        .ios-input-group { margin-bottom: 12px; text-align: left; }
+        .ios-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-left: 10px; margin-bottom: 5px; display: block; }
+        input, select { width: 100%; padding: 14px; border-radius: 15px; background: rgba(120,120,128,0.12); border: none; color: var(--text); outline: none; }
         
-        /* TYPEWRITER - FIX POSIZIONE CURSORE */
-        .type-wrap { display: inline-flex; align-items: center; margin-top: 5px; }
-        .typewriter { 
-            color: var(--accent);
-            font-weight: 700;
-            border-right: 3px solid var(--accent);
-            padding-right: 12px; /* Spazio extra per non coprire la R */
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-            animation: blink 0.7s step-end infinite;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent) } }
-        
-        .wave-emoji { display: inline-block; animation: wave 1.5s infinite; transform-origin: 70% 70%; margin-right: 10px; }
-        @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(20deg); } 75% { transform: rotate(-15deg); } }
+        .repo-status-card { background: rgba(59, 130, 246, 0.1); border-radius: 18px; padding: 12px; margin-bottom: 15px; display: none; border: 1px solid rgba(59, 130, 246, 0.2); font-size: 0.8rem; }
 
-        .marquee-container { overflow: hidden; width: 100%; margin: 15px 0; }
-        .marquee-content { display: flex; gap: 40px; width: max-content; align-items: center; animation: scrollL 25s linear infinite; }
-        .reverse { animation: scrollR 25s linear infinite; }
-        @keyframes scrollL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes scrollR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-        
-        .logo-comp { height: 45px; max-width: 160px; object-fit: contain; filter: none !important; opacity: 1 !important; transition: transform 0.3s ease; }
-        .logo-comp:hover { transform: scale(1.08); }
+        .btn-ios { width: 100%; padding: 16px; border-radius: 18px; font-weight: 700; border: none; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-wa { background: var(--wa-color); color: white; }
+        .btn-mail { background: var(--mail-color); color: white; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .card { background-color: var(--surface); padding: 2rem; border-radius: 18px; border: 1px solid var(--border); transition: 0.3s; }
-        .card h3 { font-family: 'Space Grotesk'; color: var(--accent); margin-bottom: 0.8rem; }
-        .card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; }
-
-        .contact-box { background-color: var(--surface); padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border); max-width: 500px; margin: 0 auto; text-align: left; }
-        input, select { width: 100%; background-color: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px; color: var(--text); outline: none; margin-bottom: 1rem; }
-        .btn { padding: 15px; border-radius: 10px; font-weight: 700; color: white; display: flex; justify-content: center; align-items: center; gap: 8px; cursor: pointer; flex: 1; transition: 0.3s; }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-weight: 800; font-family: 'Space Grotesk'; font-size: 1.2rem;">LUCA<span style="color:var(--accent)">.</span>F</div>
-        <div class="nav-right">
-            <a href="https://github.com/lxfx05" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.reddit.com/u/xpfarmer05/s/Vl2ZwGTvsU" class="social-link" target="_blank"><i class="fab fa-reddit-alien"></i></a>
-            <div onclick="openDeezer()" class="social-link" title="Deezer Profile"><i class="fab fa-deezer"></i></div>
-            <button class="theme-btn" id="themeSwitcher"><i class="fas fa-sun"></i></button>
+        <div style="font-weight: 800; font-family: 'Space Grotesk';">LUCA<span style="color:var(--accent)">.</span>F</div>
+        <div class="nav-socials">
+            <a href="https://github.com/lxfx05" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.deezer.com/it/profile/5836906242" target="_blank"><i class="fa-brands fa-deezer"></i></a>
+            <i class="fas fa-sun" id="themeSwitcher" style="cursor:pointer"></i>
         </div>
     </nav>
 
-    <div class="progress-container"><div id="scrollBar"></div></div>
+    <div class="progress-wrap"><div id="scrollBar"></div></div>
 
     <main>
-        <section class="reveal" style="padding-top: 9rem;">
-            <div style="font-family: 'Space Grotesk'; font-size: clamp(2rem, 7vw, 3.8rem); line-height: 1.2;">
-                <span class="wave-emoji">👋🏻</span>Hi! I'm Luke <br> 
-                <span style="font-size: 0.7em; color: var(--text-dim);">and i'm an Italian</span><br>
-                <div class="type-wrap"><span id="type-text" class="typewriter"></span></div>
+        <section class="hero-container reveal">
+            <div class="pfp-box"><img src="https://github.com/lxfx05.png"></div>
+            <div class="hero-text">
+                <h1 style="font-family: 'Space Grotesk'; font-size: 2.2rem;">Luca Finaldi</h1>
+                <p style="color: var(--text-dim);">Systems Architect & <span id="type-text" style="color:var(--accent); font-weight: 700;"></span></p>
             </div>
         </section>
 
-        <div class="reveal">
-            <div class="marquee-container"><div id="t1" class="marquee-content"></div></div>
-            <div class="marquee-container"><div id="t2" class="marquee-content reverse"></div></div>
+        <div class="marquee reveal">
+            <div class="marquee-inner" id="techMarquee"></div>
         </div>
 
-        <section class="reveal" style="text-align: center;">
-            <div style="background-color: var(--surface); padding: 2.5rem; border-radius: 20px; max-width: 500px; margin: 0 auto; border: 1px solid var(--border);">
-                <canvas id="skillChart"></canvas>
+        <section class="reveal">
+            <div class="cta-card">
+                <div style="text-align: center;">
+                    <h2 style="font-family: 'Space Grotesk'; font-size: 1.6rem; margin-bottom: 8px;">Expertise Radar</h2>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Ingegneria dei sistemi e sicurezza integrata.</p>
+                </div>
+                <div class="cta-chart-side"><canvas id="skillChart"></canvas></div>
             </div>
         </section>
 
         <section class="grid reveal">
-            <div class="card"><h3>OS Hardening</h3><p>Kernel custom e configurazioni di sicurezza proattiva su Arch Linux.</p></div>
-            <div class="card"><h3>AI Ops</h3><p>Deployment locale di modelli LLM e ottimizzazione pipeline RAG.</p></div>
-            <div class="card"><h3>Code Fix</h3><p>Auditing e refactoring di repository GitHub con focus sulla sicurezza.</p></div>
+            <div class="card">
+                <h3>CodeBot-</h3>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 5px;">AI System Audit. Analisi di sicurezza tramite LLM locale.</p>
+                <div class="btn-flex">
+                    <a href="https://github.com/lxfx05/CodeBot-Ai-" target="_blank" class="btn-s">README</a>
+                    <a href="https://codebot-ai.vercel.app/" target="_blank" class="btn-p">TEST</a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Free-Ai</h3>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 5px;">Framework per integrazione AI Full-stack offline.</p>
+                <div class="btn-flex">
+                    <a href="https://github.com/lxfx05/Free-Ai/blob/main/README.md" target="_blank" class="btn-s">README</a>
+                    <a href="https://lxfx05.github.io/Free-Ai/" target="_blank" class="btn-p">TEST</a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Password Gen</h3>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 5px;">Generazione chiavi crittografiche ad alta entropia.</p>
+                <div class="btn-flex">
+                    <a href="https://github.com/lxfx05/Password/blob/main/docs/README.md" target="_blank" class="btn-s">README</a>
+                    <a href="https://password-seven-pink.vercel.app/" target="_blank" class="btn-p">TEST</a>
+                </div>
+            </div>
         </section>
 
-        <div class="reveal" style="margin-top: 4rem;">
-            <p style="padding: 0 8%; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 700;">Trusted by & Collaborations</p>
-            <div class="marquee-container"><div id="comps" class="marquee-content"></div></div>
+        <div class="marquee reveal" style="margin: 3rem 0;">
+            <div class="marquee-inner">
+                <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png" style="height:35px">
+                <img src="https://goonnet.it/storage/Main-240x92-1.webp" style="height:35px">
+                <img src="https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png" style="height:35px">
+                <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png" style="height:35px">
+                <img src="https://goonnet.it/storage/Main-240x92-1.webp" style="height:35px">
+                <img src="https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png" style="height:35px">
+            </div>
         </div>
 
-        <section id="contact" style="text-align: center; padding-bottom: 5rem;">
+        <section id="contact" class="reveal">
             <div class="contact-box">
-                <select id="contactType" onchange="toggleRepo()"><option value="Collab">Collaboration</option><option value="Fix">Repo Fix</option></select>
-                <input type="text" id="repoName" style="display:none;" placeholder="Link Repository">
-                <input type="text" id="username" placeholder="Tuo Username">
-                <div style="display: flex; gap: 12px;">
-                    <div class="btn" style="background: #25d366;" onclick="send('wa')"><i class="fab fa-whatsapp"></i> WhatsApp</div>
-                    <div class="btn" style="background: var(--accent);" onclick="send('mail')"><i class="fas fa-envelope"></i> Email</div>
+                <h2 style="margin-bottom: 1.5rem; text-align: center;">Inquiry Center</h2>
+                <div class="ios-input-group">
+                    <label class="ios-label">Tipo Richiesta</label>
+                    <select id="reqType" onchange="toggleRepoUI()">
+                        <option value="new">Nuovo Progetto</option>
+                        <option value="repo">Audit Repo Esistente</option>
+                    </select>
                 </div>
+                <div id="repoWrapper" style="display:none;" class="ios-input-group">
+                    <label class="ios-label">Progetto GitHub</label>
+                    <select id="repoDrop" onchange="fetchUpdateInfo()"></select>
+                </div>
+                <div id="repoStatus" class="repo-status-card">
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 5px;"><span>Ultimo Commit:</span> <b id="commitDate" style="color:var(--accent)"></b></div>
+                    <div style="display:flex; justify-content: space-between;"><span>Ora aggiornamento:</span> <b id="commitTime" style="color:var(--accent)"></b></div>
+                </div>
+                <div class="ios-input-group">
+                    <label class="ios-label">Identificativo</label>
+                    <input type="text" id="userName" placeholder="Tuo Nome">
+                </div>
+                <button onclick="sendMsg('wa')" class="btn-ios btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                <button onclick="sendMsg('mail')" class="btn-ios btn-mail"><i class="fas fa-envelope"></i> Email</button>
             </div>
         </section>
     </main>
 
     <script>
-        function openDeezer() {
-            window.location.href = `deezer://www.deezer.com/profile/6471202281`;
-            setTimeout(() => { window.open(`https://www.deezer.com/it/profile/6471202281`, '_blank'); }, 600);
-        }
-
-        const switcher = document.getElementById('themeSwitcher');
-        switcher.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            const isLight = document.body.classList.contains('light-mode');
-            switcher.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            // Aggiorna colori grafico
-            skillChart.options.scales.r.pointLabels.color = isLight ? '#52525b' : '#a1a1aa';
-            skillChart.update();
-        });
-
-        window.addEventListener('scroll', () => {
+        // Progress Page View
+        window.onscroll = () => {
             let winScroll = document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById("scrollBar").style.width = (winScroll / height) * 100 + "%";
-            document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active'); });
-        });
+            document.getElementById('scrollBar').style.width = (winScroll / height) * 100 + "%";
+            document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 40) el.classList.add('active'); });
+        };
 
-        const roles = ["devlooper", "sec manager", "LLM learner"];
-        let rIdx = 0, cIdx = 0, isDel = false;
+        // Theme Toggle
+        document.getElementById('themeSwitcher').onclick = function() {
+            document.body.classList.toggle('light-mode');
+            this.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
+        };
+
+        // Typewriter Professionale
+        const roles = ["Fullstack Developer", "Security Researcher", "AI Engineer"];
+        let r=0, c=0, del=false;
         function type() {
-            const current = roles[rIdx];
-            const target = document.getElementById("type-text");
-            target.textContent = isDel ? current.substring(0, cIdx - 1) : current.substring(0, cIdx + 1);
-            cIdx = isDel ? cIdx - 1 : cIdx + 1;
-            let speed = isDel ? 60 : 120;
-            if (!isDel && cIdx === current.length) { isDel = true; speed = 2500; }
-            else if (isDel && cIdx === 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; speed = 500; }
-            setTimeout(type, speed);
+            const text = roles[r];
+            document.getElementById('type-text').innerText = del ? text.substring(0, c--) : text.substring(0, c++);
+            if(!del && c > text.length) { del=true; setTimeout(type, 1500); return; }
+            if(del && c<0) { del=false; r=(r+1)%roles.length; c=0; }
+            setTimeout(type, del ? 50 : 100);
         }
         type();
 
-        function toggleRepo() { document.getElementById('repoName').style.display = document.getElementById('contactType').value === 'Fix' ? 'block' : 'none'; }
-        function send(m) {
-            const msg = `Ciao Luca, sono ${document.getElementById('username').value}. Servizio: ${document.getElementById('contactType').value}`;
-            if(m === 'wa') window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
-            else window.location.href = `mailto:lucafinaldi3@gmail.com?body=${encodeURIComponent(msg)}`;
-        }
-
-        // GRAFICO RAGNATELA - TESTI RIPRISTINATI
-        const skillChart = new Chart(document.getElementById('skillChart'), {
+        // Chart Expertise
+        new Chart(document.getElementById('skillChart'), {
             type: 'radar',
             data: {
-                labels: ['Security', 'AI & LLM', 'Backend', 'Frontend', 'DevOps', 'Systems'],
-                datasets: [{
-                    label: 'Skills',
-                    data: [95, 90, 85, 70, 88, 92],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: '#3b82f6',
-                    pointBackgroundColor: '#3b82f6',
-                    borderWidth: 2
-                }]
+                labels: ['Security', 'AI', 'Backend', 'Frontend', 'DevOps', 'Systems'],
+                datasets: [{ data: [95, 90, 85, 75, 88, 92], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6', borderWidth: 2, pointRadius: 0 }]
             },
-            options: {
-                scales: {
-                    r: {
-                        angleLines: { color: 'rgba(113,113,122,0.2)' },
-                        grid: { color: 'rgba(113,113,122,0.2)' },
-                        pointLabels: {
-                            color: '#a1a1aa',
-                            font: { size: 12, family: 'Space Grotesk', weight: '600' }
-                        },
-                        ticks: { display: false, stepSize: 20 },
-                        suggestedMin: 0,
-                        suggestedMax: 100
-                    }
-                },
-                plugins: { legend: { display: false } }
-            }
+            options: { scales: { r: { grid:{color:'rgba(255,255,255,0.05)'}, ticks:{display:false}, pointLabels:{color:'#71717a', font:{size:10}} } }, plugins: { legend: {display:false} } }
         });
 
-        const fill = (list, id, isT) => {
-            const content = list.map(i => isT ? `<img src="https://skillicons.dev/icons?i=${i}" style="height:35px">` : `<img src="${i}" class="logo-comp">`).join('');
-            document.getElementById(id).innerHTML = content + content;
-        };
-        fill(['python','django','postgresql','docker','nextjs','javascript','java','c'], 't1', true);
-        fill(['arch','bash','linux','mongodb','react','aws','cpp','git','kali'], 't2', true);
-        fill(['https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png','https://goonnet.it/storage/Main-240x92-1.webp','https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png','https://virtualjuice.net/wp-content/themes/iimage-boiler/assets/images/logo.png'], 'comps', false);
+        // GitHub Logic lxfx05
+        async function load() {
+            const res = await fetch('https://api.github.com/users/lxfx05/repos?sort=updated');
+            const data = await res.json();
+            const d = document.getElementById('repoDrop');
+            d.innerHTML = '<option value="">-- Seleziona Repository --</option>';
+            data.forEach(repo => {
+                let opt = document.createElement('option');
+                opt.value = repo.name; opt.textContent = repo.name.toUpperCase();
+                d.appendChild(opt);
+            });
+        }
+        async function fetchUpdateInfo() {
+            const name = document.getElementById('repoDrop').value;
+            if(!name) return;
+            const res = await fetch(`https://api.github.com/repos/lxfx05/${name}`);
+            const data = await res.json();
+            const date = new Date(data.updated_at);
+            document.getElementById('commitDate').innerText = date.toLocaleDateString('it-IT');
+            document.getElementById('commitTime').innerText = date.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
+            document.getElementById('repoStatus').style.display = 'block';
+        }
+        function toggleRepoUI() {
+            document.getElementById('repoWrapper').style.display = document.getElementById('reqType').value === 'repo' ? 'block' : 'none';
+        }
 
-        window.dispatchEvent(new Event('scroll'));
+        // Tech Icons Marquee
+        const icons = ['python','js','docker','aws','bash','nextjs','react','kali','git','linux','cpp','ts'];
+        document.getElementById('techMarquee').innerHTML = icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:40px">`).join('') + icons.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:40px">`).join('');
+
+        function sendMsg(m) {
+            const n = document.getElementById('userName').value || "Visitatore";
+            const msg = `Ciao Luca, sono ${n}.`;
+            if(m === 'wa') window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
+            else window.location.href = `mailto:lucafinaldi3@gmail.com?subject=Inquiry&body=${msg}`;
+        }
+        load();
     </script>
 </body>
 </html>
