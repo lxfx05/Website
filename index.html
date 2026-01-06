@@ -27,28 +27,29 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        nav { height: 70px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--bg); z-index: 1000; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
+        nav { height: 70px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--bg); z-index: 1000; border-bottom: 1px solid var(--border); }
         .nav-right { display: flex; align-items: center; gap: 20px; }
         .social-link { color: var(--text); font-size: 1.1rem; opacity: 0.8; transition: 0.3s; cursor: pointer; }
         .social-link:hover { opacity: 1; color: var(--accent); }
-        .theme-btn { cursor: pointer; color: var(--text); background: none; font-size: 1.1rem; border: none; outline: none; }
+        .theme-btn { cursor: pointer; color: var(--text); background: none; font-size: 1.1rem; border: none; }
 
         .progress-container { position: fixed; top: 70px; left: 0; width: 100%; height: 3px; background: var(--border); z-index: 999; }
         #scrollBar { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 10px var(--accent); }
 
         section { padding: 6rem 8% 2rem; }
         
-        /* TYPEWRITER FIX - NO OVERLAP */
-        .type-wrap { display: inline-flex; align-items: center; }
+        /* TYPEWRITER - FIX POSIZIONE CURSORE */
+        .type-wrap { display: inline-flex; align-items: center; margin-top: 5px; }
         .typewriter { 
             color: var(--accent);
             font-weight: 700;
             border-right: 3px solid var(--accent);
-            padding-right: 8px; /* Spazio di sicurezza per la r */
+            padding-right: 12px; /* Spazio extra per non coprire la R */
             white-space: nowrap;
             overflow: hidden;
             display: inline-block;
             animation: blink 0.7s step-end infinite;
+            font-family: 'Space Grotesk', sans-serif;
         }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent) } }
         
@@ -56,8 +57,8 @@
         @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(20deg); } 75% { transform: rotate(-15deg); } }
 
         .marquee-container { overflow: hidden; width: 100%; margin: 15px 0; }
-        .marquee-content { display: flex; gap: 50px; width: max-content; align-items: center; animation: scrollL 22s linear infinite; }
-        .reverse { animation: scrollR 22s linear infinite; }
+        .marquee-content { display: flex; gap: 40px; width: max-content; align-items: center; animation: scrollL 25s linear infinite; }
+        .reverse { animation: scrollR 25s linear infinite; }
         @keyframes scrollL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes scrollR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
         
@@ -65,7 +66,7 @@
         .logo-comp:hover { transform: scale(1.08); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .card { background-color: var(--surface); padding: 2.2rem; border-radius: 18px; border: 1px solid var(--border); transition: 0.3s; }
+        .card { background-color: var(--surface); padding: 2rem; border-radius: 18px; border: 1px solid var(--border); transition: 0.3s; }
         .card h3 { font-family: 'Space Grotesk'; color: var(--accent); margin-bottom: 0.8rem; }
         .card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; }
 
@@ -80,11 +81,11 @@
 <body>
 
     <nav>
-        <div style="font-weight: 800; font-family: 'Space Grotesk';">LUCA<span style="color:var(--accent)">.</span>F</div>
+        <div style="font-weight: 800; font-family: 'Space Grotesk'; font-size: 1.2rem;">LUCA<span style="color:var(--accent)">.</span>F</div>
         <div class="nav-right">
             <a href="https://github.com/lucafinaldi" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.reddit.com/u/xpfarmer05/s/Vl2ZwGTvsU" class="social-link" target="_blank"><i class="fab fa-reddit-alien"></i></a>
-            <div onclick="openDeezer()" class="social-link"><i class="fab fa-deezer"></i></div>
+            <div onclick="openDeezer()" class="social-link" title="Deezer Profile"><i class="fab fa-deezer"></i></div>
             <button class="theme-btn" id="themeSwitcher"><i class="fas fa-sun"></i></button>
         </div>
     </nav>
@@ -93,9 +94,9 @@
 
     <main>
         <section class="reveal" style="padding-top: 9rem;">
-            <div style="font-family: 'Space Grotesk'; font-size: clamp(2rem, 7vw, 3.5rem); line-height: 1.2;">
+            <div style="font-family: 'Space Grotesk'; font-size: clamp(2rem, 7vw, 3.8rem); line-height: 1.2;">
                 <span class="wave-emoji">👋🏻</span>Hi! I'm Luke <br> 
-                <span style="font-size: 0.8em; color: var(--text-dim);">and i'm an Italian</span><br>
+                <span style="font-size: 0.7em; color: var(--text-dim);">and i'm an Italian</span><br>
                 <div class="type-wrap"><span id="type-text" class="typewriter"></span></div>
             </div>
         </section>
@@ -106,30 +107,30 @@
         </div>
 
         <section class="reveal" style="text-align: center;">
-            <div style="background-color: var(--surface); padding: 2rem; border-radius: 20px; max-width: 450px; margin: 0 auto; border: 1px solid var(--border);">
+            <div style="background-color: var(--surface); padding: 2.5rem; border-radius: 20px; max-width: 500px; margin: 0 auto; border: 1px solid var(--border);">
                 <canvas id="skillChart"></canvas>
             </div>
         </section>
 
         <section class="grid reveal">
-            <div class="card"><h3>OS Hardening</h3><p>Kernel custom e hardening su Arch Linux.</p></div>
-            <div class="card"><h3>AI Ops</h3><p>Deployment locale di modelli LLM.</p></div>
-            <div class="card"><h3>Code Fix</h3><p>Auditing tecnico di repository GitHub.</p></div>
+            <div class="card"><h3>OS Hardening</h3><p>Kernel custom e configurazioni di sicurezza proattiva su Arch Linux.</p></div>
+            <div class="card"><h3>AI Ops</h3><p>Deployment locale di modelli LLM e ottimizzazione pipeline RAG.</p></div>
+            <div class="card"><h3>Code Fix</h3><p>Auditing e refactoring di repository GitHub con focus sulla sicurezza.</p></div>
         </section>
 
-        <div class="reveal" style="margin-top: 3rem;">
-            <p style="padding: 0 8%; font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Trusted by & Partners</p>
+        <div class="reveal" style="margin-top: 4rem;">
+            <p style="padding: 0 8%; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 700;">Trusted by & Collaborations</p>
             <div class="marquee-container"><div id="comps" class="marquee-content"></div></div>
         </div>
 
         <section id="contact" style="text-align: center; padding-bottom: 5rem;">
             <div class="contact-box">
                 <select id="contactType" onchange="toggleRepo()"><option value="Collab">Collaboration</option><option value="Fix">Repo Fix</option></select>
-                <input type="text" id="repoName" style="display:none;" placeholder="Repo Link">
+                <input type="text" id="repoName" style="display:none;" placeholder="Link Repository">
                 <input type="text" id="username" placeholder="Tuo Username">
-                <div style="display: flex; gap: 10px;">
-                    <div class="btn" style="background: #25d366;" onclick="send('wa')">WhatsApp</div>
-                    <div class="btn" style="background: var(--accent);" onclick="send('mail')">Email</div>
+                <div style="display: flex; gap: 12px;">
+                    <div class="btn" style="background: #25d366;" onclick="send('wa')"><i class="fab fa-whatsapp"></i> WhatsApp</div>
+                    <div class="btn" style="background: var(--accent);" onclick="send('mail')"><i class="fas fa-envelope"></i> Email</div>
                 </div>
             </div>
         </section>
@@ -144,7 +145,11 @@
         const switcher = document.getElementById('themeSwitcher');
         switcher.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
-            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+            const isLight = document.body.classList.contains('light-mode');
+            switcher.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            // Aggiorna colori grafico
+            skillChart.options.scales.r.pointLabels.color = isLight ? '#52525b' : '#a1a1aa';
+            skillChart.update();
         });
 
         window.addEventListener('scroll', () => {
@@ -154,7 +159,6 @@
             document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active'); });
         });
 
-        // TYPEWRITER RE-LOGIC (Fix cursore sulla R)
         const roles = ["devlooper", "sec manager", "LLM learner"];
         let rIdx = 0, cIdx = 0, isDel = false;
         function type() {
@@ -163,8 +167,8 @@
             target.textContent = isDel ? current.substring(0, cIdx - 1) : current.substring(0, cIdx + 1);
             cIdx = isDel ? cIdx - 1 : cIdx + 1;
             let speed = isDel ? 60 : 120;
-            if (!isDel && cIdx === current.length) { isDel = true; speed = 2000; }
-            else if (isDel && cIdx === 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; speed = 400; }
+            if (!isDel && cIdx === current.length) { isDel = true; speed = 2500; }
+            else if (isDel && cIdx === 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; speed = 500; }
             setTimeout(type, speed);
         }
         type();
@@ -176,19 +180,46 @@
             else window.location.href = `mailto:lucafinaldi3@gmail.com?body=${encodeURIComponent(msg)}`;
         }
 
+        // GRAFICO RAGNATELA - TESTI RIPRISTINATI
+        const skillChart = new Chart(document.getElementById('skillChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Security', 'AI & LLM', 'Backend', 'Frontend', 'DevOps', 'Systems'],
+                datasets: [{
+                    label: 'Skills',
+                    data: [95, 90, 85, 70, 88, 92],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: '#3b82f6',
+                    pointBackgroundColor: '#3b82f6',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(113,113,122,0.2)' },
+                        grid: { color: 'rgba(113,113,122,0.2)' },
+                        pointLabels: {
+                            color: '#a1a1aa',
+                            font: { size: 12, family: 'Space Grotesk', weight: '600' }
+                        },
+                        ticks: { display: false, stepSize: 20 },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
         const fill = (list, id, isT) => {
-            const content = list.map(i => isT ? `<img src="https://skillicons.dev/icons?i=${i}" style="height:30px">` : `<img src="${i}" class="logo-comp">`).join('');
+            const content = list.map(i => isT ? `<img src="https://skillicons.dev/icons?i=${i}" style="height:35px">` : `<img src="${i}" class="logo-comp">`).join('');
             document.getElementById(id).innerHTML = content + content;
         };
         fill(['python','django','postgresql','docker','nextjs','javascript','java','c'], 't1', true);
         fill(['arch','bash','linux','mongodb','react','aws','cpp','git','kali'], 't2', true);
         fill(['https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png','https://goonnet.it/storage/Main-240x92-1.webp','https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png','https://virtualjuice.net/wp-content/themes/iimage-boiler/assets/images/logo.png'], 'comps', false);
-        
-        const skillChart = new Chart(document.getElementById('skillChart'), {
-            type: 'radar',
-            data: { labels: ['Security', 'AI', 'Backend', 'Frontend', 'DevOps', 'Systems'], datasets: [{ data: [95, 90, 85, 70, 88, 92], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6' }] },
-            options: { scales: { r: { grid: { color: 'rgba(113,113,122,0.1)' }, pointLabels: { display: false }, ticks: { display: false } } }, plugins: { legend: { display: false } } }
-        });
+
         window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
