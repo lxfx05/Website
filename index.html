@@ -3,278 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luca Finaldi | Portfolio</title>
+    <title>Luca Finaldi | Systems Architect</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <style>
         :root {
-            --primary: #a29bfe;
-            --bg: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-main: #2d3436;
-            --text-sec: #636e72;
-            --radius: 30px;
-            --shadow: 0 20px 40px rgba(0,0,0,0.05);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg: #050507; --surface: #0e0e11; --text: #f4f4f5; --text-dim: #71717a;
+            --accent: #3b82f6; --border: rgba(255,255,255,0.1);
         }
 
-        [data-theme="dark"] {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-sec: #94a3b8;
+        body.light-mode {
+            --bg: #ffffff; --surface: #f4f4f5; --text: #09090b; --text-dim: #52525b;
+            --accent: #2563eb; --border: rgba(0,0,0,0.1);
+        }
+
+        @keyframes siteEntry {
+            0% { filter: blur(20px); opacity: 0; transform: scale(1.02); }
+            100% { filter: blur(0); opacity: 1; transform: scale(1); }
+        }
+
+        body { 
+            background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden;
+            animation: siteEntry 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; transition: background 0.4s ease; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        nav { height: 70px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--bg); z-index: 1000; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .social-link { color: var(--text); font-size: 1.1rem; opacity: 0.8; transition: 0.3s; cursor: pointer; }
+        .social-link:hover { opacity: 1; color: var(--accent); }
+        .theme-btn { cursor: pointer; color: var(--text); background: none; font-size: 1.1rem; border: none; outline: none; }
+
+        .progress-container { position: fixed; top: 70px; left: 0; width: 100%; height: 3px; background: var(--border); z-index: 999; }
+        #scrollBar { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 10px var(--accent); }
+
+        section { padding: 6rem 8% 2rem; }
+        .typewriter { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 3px solid var(--accent); animation: typing 0.5s steps(20, end), blink 0.5s step-end infinite; width: fit-content; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent) } }
+        
+        .wave-emoji { display: inline-block; animation: wave 1.5s infinite; transform-origin: 70% 70%; margin-right: 10px; }
+        @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(20deg); } 75% { transform: rotate(-15deg); } }
+
+        /* MARQUEE */
+        .marquee-container { overflow: hidden; width: 100%; margin: 15px 0; }
+        .marquee-content { display: flex; gap: 50px; width: max-content; align-items: center; animation: scrollL 22s linear infinite; }
+        .reverse { animation: scrollR 22s linear infinite; }
+        @keyframes scrollL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes scrollR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        
+        .logo-tech { height: 35px; }
+        /* AZIENDE SEMPRE COLORATE */
+        .logo-comp { 
+            height: 45px; 
+            max-width: 160px; 
+            object-fit: contain; 
+            filter: none !important; /* Rimosso ogni filtro */
+            opacity: 1 !important;
+            transition: transform 0.3s ease;
+        }
+        .logo-comp:hover { transform: scale(1.08); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background-color: var(--surface); padding: 2.2rem; border-radius: 18px; border: 1px solid var(--border); transition: 0.3s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card h3 { font-family: 'Space Grotesk'; color: var(--accent); margin-bottom: 0.8rem; }
+        .card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; }
+
+        .contact-box { background-color: var(--surface); padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border); max-width: 500px; margin: 0 auto; text-align: left; }
+        .input-group { margin-bottom: 1.2rem; }
+        label { display: block; font-size: 0.7rem; margin-bottom: 0.5rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+        input, select { width: 100%; background-color: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px; color: var(--text); font-family: 'Fira Code'; outline: none; }
+        
+        .btn { padding: 15px; border-radius: 10px; font-weight: 700; color: white; display: flex; justify-content: center; align-items: center; gap: 8px; cursor: pointer; flex: 1; transition: 0.3s; }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .spacer { height: 120px; }
-
-        .top-controls { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.5rem; }
-        .brand-name span { color: var(--primary); }
-        .lang-select { border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); padding: 8px; background: var(--card-bg); color: var(--text-main); }
-
-        .hero { padding: 40px 20px 60px; text-align: center; }
-        .hero-circle { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 25px; border: 6px solid var(--card-bg); box-shadow: var(--shadow); overflow: hidden; }
-        .hero-circle img { width: 100%; height: 100%; object-fit: cover; }
-
-        .main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); overflow: hidden; cursor: pointer; border: 1px solid rgba(0,0,0,0.03); max-height: 110px; }
-        .card:hover { max-height: 400px; transform: translateY(-5px); }
-        .card-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
-        .card i { font-size: 2rem; color: var(--primary); }
-        .card-content { opacity: 0; transition: opacity 0.4s ease; color: var(--text-sec); padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.05); }
-        .card:hover .card-content { opacity: 1; }
-
-        .contact-selection { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        .option-box { background: var(--card-bg); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
-        .option-box h3 { margin-bottom: 20px; font-family: 'Playfair Display'; font-size: 1.8rem; }
-        
-        .btn { padding: 14px 25px; border-radius: 50px; border: none; background: var(--primary); color: white; font-weight: 700; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-top: 15px; }
-        .btn-wa { background: #25D366; }
-        
-        .repo-select { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.1); margin: 15px 0; background: var(--bg); color: var(--text-main); }
-        .input-name { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 10px; background: var(--bg); color: var(--text-main); }
-
-        @media (max-width: 850px) { .contact-selection { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <header class="top-controls">
-        <div class="brand-name"><span>lxfx05</span> Luca Finaldi</div>
-        <div class="ui-actions" style="display:flex; gap:10px;">
-            <select id="langSelect" class="lang-select">
-                <option value="it">🇮🇹 IT</option>
-                <option value="en">🇺🇸 EN</option>
-                <option value="ru">🇷🇺 RU</option>
-                <option value="zh">🇨🇳 ZH</option>
-                <option value="de">🇩🇪 DE</option>
-            </select>
-            <button id="themeToggle" style="background:var(--card-bg); border:1px solid rgba(0,0,0,0.1); border-radius:12px; padding:10px; cursor:pointer;"><i class="fas fa-moon"></i></button>
+    <nav>
+        <div style="font-weight: 800; font-family: 'Space Grotesk'; font-size: 1.2rem;">LUCA<span style="color:var(--accent)">.</span>F</div>
+        <div class="nav-right">
+            <a href="https://github.com/lxfx05" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.reddit.com/u/xpfarmer05/s/Vl2ZwGTvsU" class="social-link" target="_blank"><i class="fab fa-reddit-alien"></i></a>
+            <div onclick="openDeezer()" class="social-link" title="Deezer Profile"><i class="fab fa-deezer"></i></div>
+            <button class="theme-btn" id="themeSwitcher"><i class="fas fa-sun"></i></button>
         </div>
-    </header>
+    </nav>
 
-    <main class="container">
-        <section class="hero reveal">
-            <div class="hero-circle"><img src="https://i.ibb.co/GfYGBJDz/1000064539-Nero-AI-Image-Upscaler-Photo-Face.jpg"></div>
-            <h1 id="t-hero-h1">Software Developer & AI Learning</h1>
-            <p id="t-hero-p">Architetture stabili e intelligenza applicata.</p>
-        </section>
+    <div class="progress-container"><div id="scrollBar"></div></div>
 
-        <section class="main-grid">
-            <div class="card reveal">
-                <div class="card-header"><i class="fas fa-brain"></i><h3 id="t-card1-h">Machine Learning</h3></div>
-                <div class="card-content" id="t-card1-c">Integrazione LLM e modelli predittivi per automazione.</div>
-            </div>
-            <div class="card reveal">
-                <div class="card-header"><i class="fas fa-terminal"></i><h3 id="t-card2-h">Unix & Security</h3></div>
-                <div class="card-content" id="t-card2-c">Esperto Arch Linux e NixOS. Hardening di sistemi e cloud security.</div>
-            </div>
-            <div class="card reveal">
-                <div class="card-header"><i class="fas fa-code"></i><h3 id="t-card3-h">Full-Stack</h3></div>
-                <div class="card-content" id="t-card3-c">Sviluppo Next.js e Vite con ottimizzazione e performance.</div>
+    <main>
+        <section class="reveal" style="padding-top: 9rem; padding-bottom: 4rem;">
+            <div style="font-family: 'Space Grotesk'; font-size: clamp(2.2rem, 8vw, 4.5rem); line-height: 1.2;">
+                <span class="wave-emoji">👋🏻</span>Hi! I'm Luke <br> 
+                <span class="typewriter" style="color: var(--accent);">and i'm an Italian</span><br>
+                <span style="color: var(--accent); font-weight: 700;">devlooper</span>
             </div>
         </section>
 
-        <div class="spacer"></div>
+        <div class="reveal">
+            <div class="marquee-container"><div id="t1" class="marquee-content"></div></div>
+            <div class="marquee-container"><div id="t2" class="marquee-content reverse"></div></div>
+        </div>
 
-        <section id="contact" class="reveal">
-            <h2 id="t-contact-h" style="text-align: center; font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Contact Options</h2>
-            <p id="t-contact-p" style="text-align: center; color: var(--text-sec); margin-bottom: 40px;">Scegli come metterti in contatto con me</p>
-            
-            <div class="contact-selection">
-                <div class="option-box">
-                    <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 15px;"></i>
-                    <h3 id="t-wa-h">WhatsApp</h3>
-                    <p id="t-wa-p">Inviami un messaggio... Quale opzione vuoi scegliere?</p>
-                    <button class="btn btn-wa" id="t-wa-btn" onclick="sendWA()">Idea Progetto</button>
-                </div>
+        <section class="reveal" style="text-align: center;">
+            <div style="background-color: var(--surface); padding: 2rem; border-radius: 20px; max-width: 500px; margin: 0 auto; border: 1px solid var(--border);">
+                <canvas id="skillChart"></canvas>
+            </div>
+        </section>
 
-                <div class="option-box">
-                    <i class="fab fa-github" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3 id="t-mail-h">Repository & Mail</h3>
-                    <p id="t-mail-p">Ho un miglioramento per la tua repository:</p>
-                    
-                    <select id="repoList" class="repo-select">
-                        <option>Loading...</option>
+        <section class="grid reveal">
+            <div class="card">
+                <h3>OS Hardening</h3>
+                <p>Configurazione kernel custom e hardening proattivo su Arch Linux. Implementazione di policy di sicurezza sandbox.</p>
+            </div>
+            <div class="card">
+                <h3>AI & LLM Ops</h3>
+                <p>Deployment locale di modelli Large Language. Ottimizzazione di pipeline RAG integrate con database vettoriali sicuri.</p>
+            </div>
+            <div class="card">
+                <h3>Code & Repo Fix</h3>
+                <p>Auditing tecnico di repository GitHub. Debugging profondo, refactoring architetturale e patch di sicurezza.</p>
+            </div>
+            <div class="card">
+                <h3>Cybersecurity</h3>
+                <p>Analisi delle minacce e penetration testing. Protezione perimetrale focalizzata sulla mitigazione zero-day.</p>
+            </div>
+        </section>
+
+        <div class="reveal" style="margin-top: 4rem;">
+            <p style="padding: 0 8%; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 700;">Trusted by & Collaborations</p>
+            <div class="marquee-container"><div id="comps" class="marquee-content"></div></div>
+        </div>
+
+        <section id="contact" style="text-align: center; padding-bottom: 5rem;">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 0.5rem;">Let's collaborate!</h2>
+            <p style="font-size: 1.1rem; color: var(--text-dim); margin-bottom: 2rem;">Looking for a <span id="role-text" style="font-family:'Fira Code'; color:var(--accent); border-right:2px solid var(--accent)"></span></p>
+
+            <div class="contact-box">
+                <div class="input-group">
+                    <label>Servizio richiesto</label>
+                    <select id="contactType" onchange="toggleRepoField()">
+                        <option value="Collaboration">Collaboration</option>
+                        <option value="Repo Fix">Repo Fix</option>
                     </select>
-                    
-                    <input type="text" id="userName" class="input-name" placeholder="Il tuo nome">
-                    <button class="btn" id="t-mail-btn" onclick="sendMail()">Invia Proposta Email</button>
+                </div>
+                <div id="repoField" class="input-group" style="display:none;">
+                    <label>Link / Nome Repository</label>
+                    <input type="text" id="repoName" placeholder="github.com/username/repo">
+                </div>
+                <div class="input-group">
+                    <label>Tuo Username</label>
+                    <input type="text" id="username" placeholder="@tuo_handle">
+                </div>
+                <div style="display: flex; gap: 12px; margin-top: 1.5rem;">
+                    <div class="btn" style="background: #25d366;" onclick="sendContact('wa')"><i class="fab fa-whatsapp"></i> WhatsApp</div>
+                    <div class="btn" style="background: var(--accent);" onclick="sendContact('mail')"><i class="fas fa-envelope"></i> Email</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 80px; text-align: center; opacity: 0.6;">
-        <p id="t-footer">© 2026 Luca Finaldi • Syncing GitHub every 2m</p>
-    </footer>
-
     <script>
-        const translations = {
-            it: {
-                heroH1: "Software Development & AI", heroP: "Architetture stabili e intelligenza applicata.",
-                c1h: "Machine Learning", c1c: "Integrazione LLM e modelli predittivi per l'automazione.",
-                c2h: "Unix & Security", c2c: "Esperto Arch Linux e NixOS. Hardening di sistemi e cloud security.",
-                c3h: "Full-Stack", c3c: "Sviluppo Next.js e Vite con ottimizzazione e performance.",
-                conH: "Opzioni di Contatto", conP: "Scegli come metterti in contatto con me",
-                waH: "WhatsApp", waP: "Inviami un messaggio... Quale opzione vuoi scegliere?", waB: "Idea Progetto",
-                maH: "Repository & Mail", maP: "Ho un miglioramento per la tua repository:", maB: "Invia Proposta Email",
-                namePh: "Il tuo nome", foot: "© 2026 Luca Finaldi • Sync GitHub ogni 2m",
-                waMsg: "Ho un'idea per un progetto... Mi collego con te e la spiego",
-                mailSub: "Miglioramento per ", mailBody: "Ciao Luca Finaldi, sono {name} e ho notato il tuo GitHub e devo dirti che ho un'idea per migliorare la repository {repo}..."
-            },
-            en: {
-                heroH1: "Software Development & AI", heroP: "Stable architectures and applied intelligence.",
-                c1h: "Machine Learning", c1c: "LLM integration and predictive models for automation.",
-                c2h: "Unix & Security", c2c: "Arch Linux and NixOS expert. System hardening and cloud security.",
-                c3h: "Full-Stack", c3c: "Next.js and Vite development with optimization.",
-                conH: "Contact Options", conP: "Choose how to get in touch with me",
-                waH: "WhatsApp", waP: "Send me a message... What option do you choose?", waB: "Project Idea",
-                maH: "Repository & Mail", maP: "I have an improvement for your repository:", maB: "Send Email Proposal",
-                namePh: "Your name", foot: "© 2026 Luca Finaldi • Syncing GitHub every 2m",
-                waMsg: "I have a project idea... I'm reaching out to explain it to you",
-                mailSub: "Improvement for ", mailBody: "Hi Luca Finaldi, I'm {name} and I saw your GitHub. I have an idea to improve the {repo} repository..."
-            },
-            ru: {
-                heroH1: "Разработка ПО и ИИ", heroP: "Стабильные архитектуры и прикладной интеллект.",
-                c1h: "Машинное обучение", c1c: "Интеграция LLM и прогнозные модели для автоматизации.",
-                c2h: "Unix и безопасность", c2c: "Эксперт по Arch Linux и NixOS. Защита систем и облачная безопасность.",
-                c3h: "Full-Stack", c3c: "Разработка на Next.js и Vite с оптимизацией.",
-                conH: "Варианты связи", conP: "Выберите способ связи со мной",
-                waH: "WhatsApp", waP: "Отправьте мне сообщение... Какой вариант вы выберете?", waB: "Идея проекта",
-                maH: "Репозиторий и почта", maP: "У меня есть предложение по улучшению вашего репозитория:", maB: "Отправить предложение",
-                namePh: "Ваше имя", foot: "© 2026 Лука Финальди • Синхронизация GitHub каждые 2 мин",
-                waMsg: "У меня есть идея проекта... Я связываюсь с вами, чтобы обсудить её",
-                mailSub: "Улучшение для ", mailBody: "Привет, Лука Финальди, я {name}. Я видел ваш GitHub, и у меня есть идея по улучшению репозитория {repo}..."
-            },
-            zh: {
-                heroH1: "软件开发与人工智能", heroP: "稳定架构与应用智能。",
-                c1h: "机器学习", c1c: "用于自动化的 LLM 集成和预测模型。",
-                c2h: "Unix 与安全", c2c: "Arch Linux 和 NixOS 专家。系统加固和云安全。",
-                c3h: "全栈开发", c3c: "使用 Next.js 和 Vite 进行优化开发。",
-                conH: "联系方式", conP: "选择与我联系的方式",
-                waH: "WhatsApp", waP: "给我发消息... 你想选择哪个选项？", waB: "项目构思",
-                maH: "代码库与邮件", maP: "我对您的代码库有改进建议：", maB: "发送电子邮件建议",
-                namePh: "您的名字", foot: "© 2026 Luca Finaldi • 每2分钟同步一次 GitHub",
-                waMsg: "我有一个项目想法... 我想联系您并详细说明",
-                mailSub: "改进建议：", mailBody: "你好 Luca Finaldi，我是 {name}。我在 GitHub 上看到了你的项目，我有一个关于改进 {repo} 的想法..."
-            },
-            de: {
-                heroH1: "Software-Entwicklung & KI", heroP: "Stabile Architekturen und angewandte Intelligenz.",
-                c1h: "Maschinelles Lernen", c1c: "LLM-Integration und prädiktive Modelle für die Automatisierung.",
-                c2h: "Unix & Sicherheit", c2c: "Experte für Arch Linux und NixOS. Systemhärtung und Cloud-Sicherheit.",
-                c3h: "Full-Stack", c3c: "Next.js- und Vite-Entwicklung mit Optimierung.",
-                conH: "Kontaktoptionen", conP: "Wählen Sie, wie Sie mich kontaktieren möchten",
-                waH: "WhatsApp", waP: "Schreib mir eine Nachricht... Welche Option wählst du?", waB: "Projektidee",
-                maH: "Repository & Mail", maP: "Ich habe eine Verbesserung für Ihr Repository:", maB: "E-Mail-Vorschlag senden",
-                namePh: "Ihr Name", foot: "© 2026 Luca Finaldi • GitHub-Sync alle 2 Min.",
-                waMsg: "Ich habe eine Projektidee... Ich melde mich bei dir, um sie zu erklären",
-                mailSub: "Verbesserung für ", mailBody: "Hallo Luca Finaldi, ich bin {name}. Ich habe dein GitHub gesehen und habe eine Idee zur Verbesserung des Repositories {repo}..."
-            }
-        };
-
-        function updateLanguage() {
-            const lang = document.getElementById('langSelect').value;
-            const t = translations[lang];
-            
-            document.getElementById('t-hero-h1').textContent = t.heroH1;
-            document.getElementById('t-hero-p').textContent = t.heroP;
-            document.getElementById('t-card1-h').textContent = t.c1h;
-            document.getElementById('t-card1-c').textContent = t.c1c;
-            document.getElementById('t-card2-h').textContent = t.c2h;
-            document.getElementById('t-card2-c').textContent = t.c2c;
-            document.getElementById('t-card3-h').textContent = t.c3h;
-            document.getElementById('t-card3-c').textContent = t.c3c;
-            document.getElementById('t-contact-h').textContent = t.conH;
-            document.getElementById('t-contact-p').textContent = t.conP;
-            document.getElementById('t-wa-h').textContent = t.waH;
-            document.getElementById('t-wa-p').textContent = t.waP;
-            document.getElementById('t-wa-btn').textContent = t.waB;
-            document.getElementById('t-mail-h').textContent = t.maH;
-            document.getElementById('t-mail-p').textContent = t.maP;
-            document.getElementById('t-mail-btn').textContent = t.maB;
-            document.getElementById('userName').placeholder = t.namePh;
-            document.getElementById('t-footer').textContent = t.foot;
+        function openDeezer() {
+            const appId = "6471202281";
+            window.location.href = `deezer://www.deezer.com/profile/${appId}`;
+            setTimeout(() => { window.open(`https://www.deezer.com/it/profile/${appId}`, '_blank'); }, 600);
         }
 
-        async function fetchRepos() {
-            const select = document.getElementById('repoList');
-            try {
-                const response = await fetch('https://api.github.com/users/lxfx05/repos');
-                const repos = await response.json();
-                select.innerHTML = '';
-                repos.forEach(repo => {
-                    const opt = document.createElement('option');
-                    opt.value = repo.name;
-                    opt.textContent = repo.name;
-                    select.appendChild(opt);
-                });
-            } catch (e) {
-                select.innerHTML = '<option>Error loading repos</option>';
-            }
-        }
+        const switcher = document.getElementById('themeSwitcher');
+        if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light-mode'); switcher.innerHTML = '<i class="fas fa-moon"></i>'; }
 
-        function sendWA() {
-            const lang = document.getElementById('langSelect').value;
-            const msg = translations[lang].waMsg;
-            window.open(`https://wa.me/393924484032?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function sendMail() {
-            const lang = document.getElementById('langSelect').value;
-            const t = translations[lang];
-            const name = document.getElementById('userName').value || (lang === 'it' ? "un utente" : "a user");
-            const repo = document.getElementById('repoList').value;
-            
-            const subject = encodeURIComponent(t.mailSub + repo);
-            const body = encodeURIComponent(t.mailBody.replace('{name}', name).replace('{repo}', repo));
-            
-            window.location.href = `mailto:lucafinaldi18@gmail.com?subject=${subject}&body=${body}`;
-        }
-
-        document.getElementById('langSelect').addEventListener('change', updateLanguage);
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            const body = document.body;
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            document.querySelector('#themeToggle i').className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        switcher.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            switcher.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            skillChart.options.scales.r.pointLabels.color = isLight ? '#52525b' : '#71717a';
+            skillChart.update();
         });
 
-        const obs = new IntersectionObserver((es) => {
-            es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        window.addEventListener('scroll', () => {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById("scrollBar").style.width = (winScroll / height) * 100 + "%";
+            document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active'); });
+        });
 
-        fetchRepos();
-        setInterval(fetchRepos, 120000);
+        const roles = ["Full stack developer", "Basilar cybersecurity manager", "Ai & data LLM learner"];
+        let rIdx = 0, cIdx = 0, deleting = false;
+        function type() {
+            const current = roles[rIdx];
+            document.getElementById("role-text").textContent = deleting ? current.substring(0, cIdx - 1) : current.substring(0, cIdx + 1);
+            cIdx = deleting ? cIdx - 1 : cIdx + 1;
+            let speed = deleting ? 50 : 100;
+            if (!deleting && cIdx === current.length) { deleting = true; speed = 2000; }
+            else if (deleting && cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; speed = 500; }
+            setTimeout(type, speed);
+        }
+        type();
+
+        function toggleRepoField() { document.getElementById('repoField').style.display = document.getElementById('contactType').value === 'Repo Fix' ? 'block' : 'none'; }
+
+        function sendContact(method) {
+            const type = document.getElementById('contactType').value, user = document.getElementById('username').value || 'Guest', repo = document.getElementById('repoName').value;
+            let msg = `Ciao Luca, sono ${user}. Sarei interessato a: ${type}.`;
+            if(type === 'Repo Fix' && repo) msg += ` Riguardo la repository: ${repo}.`;
+            if(method === 'wa') window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
+            else window.location.href = `mailto:lucafinaldi3@gmail.com?subject=${type}&body=${encodeURIComponent(msg)}`;
+        }
+
+        const skillChart = new Chart(document.getElementById('skillChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Security', 'LLM AI', 'Backend', 'Frontend', 'DevOps', 'Systems'],
+                datasets: [{ data: [95, 90, 85, 70, 88, 92], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6', pointBackgroundColor: '#3b82f6' }]
+            },
+            options: { scales: { r: { angleLines: { color: 'rgba(113,113,122,0.1)' }, grid: { color: 'rgba(113,113,122,0.1)' }, pointLabels: { color: '#71717a' }, ticks: { display: false } } }, plugins: { legend: { display: false } } }
+        });
+
+        const fill = (list, id, isTech) => {
+            const content = list.map(i => isTech ? `<img src="https://skillicons.dev/icons?i=${i}" class="logo-tech">` : `<img src="${i}" class="logo-comp">`).join('');
+            document.getElementById(id).innerHTML = content + content;
+        };
+        fill(['python','django','postgresql','docker','nextjs','javascript','java','c'], 't1', true);
+        fill(['arch','bash','linux','mongodb','react','aws','cpp','git','kali'], 't2', true);
+        fill(['https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png','https://goonnet.it/storage/Main-240x92-1.webp','https://www.greatplacetowork.it/wp-content/uploads/2025/04/LOGO_algomera.png','https://virtualjuice.net/wp-content/themes/iimage-boiler/assets/images/logo.png'], 'comps', false);
+
+        window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
 </html>
