@@ -15,23 +15,26 @@
             --accent: #3b82f6; --border: rgba(255,255,255,0.12);
             --wa-color: #28d146; --mail-color: #007aff;
             --speed: 18s;
+            --logo-opacity: 0.9; --logo-brightness: 1.1;
         }
 
         body.light-mode {
-            --bg: #f2f2f7; --surface: rgba(255, 255, 255, 0.95); --text: #1c1c1e; --text-dim: #8e8e93;
-            --accent: #007aff; --border: rgba(0,0,0,0.1);
+            --bg: #e5e7eb; --surface: rgba(255, 255, 255, 0.7); 
+            --text: #1c1c1e; --text-dim: #4b5563;
+            --accent: #2563eb; --border: rgba(0,0,0,0.1);
+            --logo-opacity: 1; --logo-brightness: 1;
         }
 
         body { 
             background-color: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; 
-            transition: background 0.3s; overflow-x: hidden; width: 100%;
+            transition: background 0.4s ease; overflow-x: hidden; width: 100%;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
+
         nav { height: 60px; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; background: var(--surface); backdrop-filter: blur(30px); z-index: 1000; border-bottom: 1px solid var(--border); }
-        .nav-socials { display: flex; gap: 35px; align-items: center; }
-        .nav-socials a { color: var(--text); font-size: 1.4rem; transition: 0.2s; }
+        .nav-socials { display: flex; gap: 25px; align-items: center; }
+        .nav-socials a { color: var(--text); font-size: 1.2rem; transition: 0.2s; }
         .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
 
         .progress-wrap { position: fixed; top: 60px; left: 0; width: 100%; height: 4px; z-index: 1001; }
@@ -39,22 +42,12 @@
 
         section { padding: 3rem 6%; max-width: 1100px; margin: 0 auto; }
 
-        /* Hero & Radar */
         .hero-container { padding-top: 120px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .avatar-box { width: 110px; height: 110px; border-radius: 30px; overflow: hidden; border: 2px solid var(--border); margin-bottom: 20px; }
-        
-        .hero-description {
-            max-width: 600px;
-            margin: 20px auto;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-dim);
-            padding: 0 20px;
-        }
+        .hero-description { max-width: 600px; margin: 20px auto; font-size: 1rem; line-height: 1.6; color: var(--text-dim); }
 
         .expertise-box { width: 100%; max-width: 380px; margin: 20px auto; padding: 20px; background: var(--surface); border-radius: 30px; border: 1px solid var(--border); }
 
-        /* Marquee */
         .tech-stack-container { width: 100vw; margin-left: calc(-50vw + 50%); overflow: hidden; padding: 1rem 0; }
         .marquee-row { display: flex; gap: 50px; width: max-content; margin-bottom: 20px; }
         .row-1 { animation: scroll-left var(--speed) linear infinite; }
@@ -62,30 +55,30 @@
         @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-        /* Aziende */
-        .company-marquee { width: 100vw; margin-left: calc(-50vw + 50%); overflow: hidden; padding: 3rem 0; }
-        .company-inner { display: flex; gap: 80px; animation: scroll-left 25s linear infinite; width: max-content; align-items: center; }
-        .partner-img { height: 50px; object-fit: contain; }
+        .company-marquee { width: 100vw; margin-left: calc(-50vw + 50%); overflow: hidden; padding: 4rem 0; background: rgba(120,120,128,0.03); margin-top: 2rem; }
+        .company-inner { display: flex; gap: 100px; animation: scroll-left 35s linear infinite; width: max-content; align-items: center; }
+        .partner-img { height: 48px; object-fit: contain; opacity: var(--logo-opacity); filter: brightness(var(--logo-brightness)); transition: 0.3s ease; }
+        .partner-img:hover { transform: scale(1.08); opacity: 1; }
 
-        /* Grid Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .card { 
-            background: var(--surface); padding: 2rem; border-radius: 28px; border: 1px solid var(--border); 
-            transition: 0.3s ease-out; opacity: 0; transform: translateY(20px);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--surface); padding: 2rem; border-radius: 28px; border: 1px solid var(--border); transition: 0.3s ease-out; opacity: 0; transform: translateY(20px); }
         .card.active { opacity: 1; transform: translateY(0); }
-        .card:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
 
-        .course-labels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-        .label-pill { 
-            background: rgba(120,120,128,0.12); color: var(--text); padding: 7px 14px; 
-            border-radius: 50px; font-size: 0.72rem; font-weight: 700; text-decoration: none; border: 1px solid var(--border);
-        }
-        .label-pill:hover { background: var(--accent); color: white; }
+        /* Nuova Sezione Collaborazione */
+        .collab-header { text-align: center; margin-bottom: 3rem; }
+        .collab-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .step-item { background: var(--surface); padding: 1.5rem; border-radius: 22px; border: 1px solid var(--border); text-align: center; }
+        .step-item i { font-size: 1.5rem; color: var(--accent); margin-bottom: 12px; }
+        .step-item h4 { font-family: 'Space Grotesk'; margin-bottom: 8px; font-size: 0.95rem; }
+        .step-item p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.4; }
 
-        .contact-box { background: var(--surface); border-radius: 35px; border: 1px solid var(--border); padding: 2.5rem; max-width: 480px; margin: 4rem auto; }
-        input, select { width: 100%; padding: 16px; border-radius: 16px; background: rgba(120,120,128,0.12); border: 1px solid transparent; color: var(--text); margin-bottom: 12px; outline: none; }
-        .btn-ios { width: 100%; padding: 18px; border-radius: 20px; font-weight: 800; border: none; cursor: pointer; margin-top: 10px; }
+        .contact-box { background: var(--surface); border-radius: 35px; border: 1px solid var(--border); padding: 2.5rem; max-width: 480px; margin: 2rem auto 4rem auto; }
+        input, select { width: 100%; padding: 16px; border-radius: 16px; background: rgba(120,120,128,0.08); border: 1px solid var(--border); color: var(--text); margin-bottom: 12px; outline: none; font-family: inherit; }
+        .btn-ios { width: 100%; padding: 18px; border-radius: 20px; font-weight: 800; border: none; cursor: pointer; margin-top: 10px; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; }
+        .btn-ios:active { transform: scale(0.97); }
+
+        .reveal { transition: 0.6s all ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -93,9 +86,10 @@
     <nav>
         <div style="font-weight: 800; font-family: 'Space Grotesk';">LUCA<span style="color:var(--accent)">.</span>F</div>
         <div class="nav-socials">
+            <a href="https://www.linkedin.com/in/luca-finaldi-840a44309" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/lxfx05" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="deezer://www.deezer.com/profile/6471202281" onclick="window.location.href='https://www.deezer.com/profile/6471202281'; return false;"><i class="fa-brands fa-deezer"></i></a>
-            <a href="https://www.reddit.com/u/xpfarmer05/s/NkIajbo9o2" target="_blank"><i class="fab fa-reddit-alien"></i></a>
+            <a href="https://www.deezer.com/profile/6471202281" target="_blank"><i class="fa-brands fa-deezer"></i></a>
+            <a href="https://www.reddit.com/u/xpfarmer05" target="_blank"><i class="fab fa-reddit-alien"></i></a>
             <i class="fas fa-sun" id="themeSwitcher" style="cursor:pointer"></i>
         </div>
     </nav>
@@ -104,18 +98,11 @@
 
     <main>
         <section class="hero-container">
-            <div class="avatar-box"><img src="https://github.com/lxfx05.png" style="width:100%"></div>
-            
+            <div class="avatar-box"><img src="https://github.com/lxfx05.png" style="width:100%" alt="Luca Finaldi"></div>
             <h1 style="font-family: 'Space Grotesk'; font-size: 2.5rem;">Luca Finaldi</h1>
             <p style="color: var(--accent); font-weight: 700; font-size: 1.1rem; min-height: 1.2em;" id="type-text"></p>
-            
-            <div class="hero-description reveal">
-                Specializzato nella progettazione di architetture scalabili, sicurezza offensiva e integrazione di modelli AI locali. Trasformo complessità tecnica in soluzioni fluide ed efficienti.
-            </div>
-
-            <div class="expertise-box reveal">
-                <canvas id="skillChart"></canvas>
-            </div>
+            <div class="hero-description reveal">Progettazione di architetture sicure e sistemi di analisi predittiva on-premise per l'ottimizzazione del codice.</div>
+            <div class="expertise-box reveal"><canvas id="skillChart"></canvas></div>
         </section>
 
         <div class="tech-stack-container">
@@ -126,31 +113,18 @@
         <section class="grid">
             <div class="card reveal">
                 <h3 style="font-family: 'Space Grotesk';">CodeBot Ai</h3>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Audit di sistema tramite LLM locale con focus su privacy e performance.</p>
-                <a href="https://codeai.vercel.app/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">LANCIA DEMO</a>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Refactoring e bug fixing automatizzato, con priorità alla riservatezza del codice e all'efficienza d'esecuzione</p>
+                <a href="https://codeai.vercel.app/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">Lancia demo</a>
             </div>
-            
             <div class="card reveal">
                 <h3 style="font-family: 'Space Grotesk';">Free-Ai</h3>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Sperimentazione di intelligenza artificiale full-stack operante offline.</p>
-                <a href="https://lxfx05.github.io/Free-Ai/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">VEDI CODICE</a>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Suite Applicazioni/siti web per il Rate-Limiting e DNS Sinkholing di LLM. Implementa regole di filtering e policy di blocco degli endpoint API.</p>
+                <a href="https://lxfx05.github.io/Free-Ai/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">Trova la tua automazione...</a>
             </div>
-
             <div class="card reveal">
                 <h3 style="font-family: 'Space Grotesk';">Password Gen</h3>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Utility crittografica per la generazione di password ad alta entropia.</p>
-                <a href="https://password-seven-pink.vercel.app/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">APRI TOOL</a>
-            </div>
-
-            <div class="card reveal">
-                <h3 style="font-family: 'Space Grotesk';">Education</h3>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Stack tecnologico e certificazioni acquisite.</p>
-                <div class="course-labels">
-                    <a href="https://www.python.org/" target="_blank" class="label-pill">Python Expert</a>
-                    <a href="https://cloud.google.com/" target="_blank" class="label-pill">Google Cloud</a>
-                    <a href="https://www.docker.com/" target="_blank" class="label-pill">Docker</a>
-                    <a href="https://www.hackthebox.com/" target="_blank" class="label-pill">HTB Labs</a>
-                </div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Utility dedicata alla creazione di stringhe crittografiche caratterizzate da elevati livelli di entropia.</p>
+                <a href="https://password-seven-pink.vercel.app/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">Apri tool</a>
             </div>
         </section>
 
@@ -164,63 +138,88 @@
                 <img src="https://aimage.it/wp-content/uploads/2024/07/aimage-400x300-1.png" class="partner-img">
                 <img src="https://goonnet.it/storage/Main-240x92-1.webp" class="partner-img">
                 <img src="https://loonacode.it/wp-content/uploads/2024/01/rsz_imagefinalresize3.png" class="partner-img">
-                <img src="https://www.centroservizitotali.it/wp-content/uploads/2019/08/ProntoPro-logo-startup-jobs.png" class="partner-img">
             </div>
         </div>
 
-        <section id="contact">
+        <section id="collaboration" style="padding-bottom: 0;">
+            <div class="collab-header reveal">
+                <h2 style="font-family: 'Space Grotesk'; font-size: 2rem;">Lavoriamo Insieme</h2>
+                <p style="color: var(--text-dim); margin-top: 10px;">Dall'idea al deploy: un workflow scalabile e sicuro per i tuoi sistemi.</p>
+                
+                <div class="collab-steps">
+                    <div class="step-item reveal">
+                        <i class="fas fa-microchip"></i>
+                        <h4>Analisi Tecnica</h4>
+                        <p>Studio della fattibilità e definizione dell'architettura ideale.</p>
+                    </div>
+                    <div class="step-item reveal">
+                        <i class="fas fa-code-branch"></i>
+                        <h4>Sviluppo Agile</h4>
+                        <p>Codice pulito, testato e documentato con cicli di feedback rapidi.</p>
+                    </div>
+                    <div class="step-item reveal">
+                        <i class="fas fa-shield-halved"></i>
+                        <h4>Audit & Security</h4>
+                        <p>Verifica delle vulnerabilità e ottimizzazione delle performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="padding-top: 0;">
             <div class="contact-box reveal">
-                <h2 style="margin-bottom: 1.5rem; text-align: center; font-family: 'Space Grotesk';">Contatti</h2>
+                <h2 style="margin-bottom: 1.5rem; text-align: center; font-family: 'Space Grotesk';">Inizia Ora</h2>
+                <label style="font-size: 0.75rem; color: var(--text-dim); margin-left: 5px;">Tipo di richiesta</label>
                 <select id="reqType" onchange="toggleRepoUI()">
                     <option value="new">Nuovo Progetto</option>
-                    <option value="repo">Audit GitHub</option>
+                    <option value="repo">Audit GitHub Repo</option>
+                    <option value="consult">Consulenza Tecnica</option>
                 </select>
-                <div id="repoWrapper" style="display:none;"><select id="repoDrop"></select></div>
-                <input type="text" id="userName" placeholder="Il tuo nome">
-                <button onclick="sendMsg('wa')" class="btn-ios" style="background:var(--wa-color); color:white; margin-bottom:10px;"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-                <button onclick="sendMsg('mail')" class="btn-ios" style="background:var(--mail-color); color:white"><i class="fas fa-envelope"></i> Email</button>
+                
+                <div id="repoWrapper" style="display:none;">
+                    <label style="font-size: 0.75rem; color: var(--text-dim); margin-left: 5px;">Seleziona Repository</label>
+                    <select id="repoDrop"></select>
+                </div>
+
+                <input type="text" id="userName" placeholder="Il tuo nome o Azienda">
+                
+                <button onclick="sendMsg('wa')" class="btn-ios" style="background:var(--wa-color);"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                <button onclick="sendMsg('mail')" class="btn-ios" style="background:var(--mail-color);"><i class="fas fa-envelope"></i> Email</button>
+                <p style="font-size: 0.7rem; color: var(--text-dim); text-align: center; margin-top: 15px;">Risposta garantita entro 24 ore lavorative.</p>
             </div>
         </section>
     </main>
 
     <script>
-        // Radar Chart
-        new Chart(document.getElementById('skillChart'), {
-            type: 'radar',
-            data: {
-                labels: ['Security', 'AI', 'Backend', 'Frontend', 'DevOps', 'Systems'],
-                datasets: [{ 
-                    data: [95, 92, 88, 75, 85, 90], 
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)', 
-                    borderColor: '#3b82f6', 
-                    borderWidth: 2,
-                    pointBackgroundColor: '#3b82f6'
-                }]
-            },
-            options: {
-                scales: { r: { grid: { color: 'rgba(255,255,255,0.1)' }, angleLines: { color: 'rgba(255,255,255,0.1)' }, ticks: { display: false }, pointLabels: { color: '#9494a3', font: { size: 10 } } } },
-                plugins: { legend: { display: false } }
-            }
-        });
-
-        // GitHub Sync
-        async function syncGitHub() {
-            try {
-                const res = await fetch('https://api.github.com/users/lxfx05/repos?sort=updated');
-                const repos = await res.json();
-                document.getElementById('repoDrop').innerHTML = repos.map(r => `<option value="${r.name}">${r.name}</option>`).join('');
-            } catch(e) {}
+        // Chart Config
+        const ctx = document.getElementById('skillChart');
+        if(ctx) {
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Security', 'AI', 'Backend', 'Frontend', 'DevOps', 'Systems'],
+                    datasets: [{ 
+                        data: [95, 92, 88, 75, 85, 90], 
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)', 
+                        borderColor: '#3b82f6', 
+                        borderWidth: 2,
+                        pointBackgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    scales: { r: { grid: { color: 'rgba(128,128,128,0.2)' }, angleLines: { color: 'rgba(128,128,128,0.2)' }, ticks: { display: false }, pointLabels: { color: '#9494a3', font: { size: 10 } } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
         }
-        function toggleRepoUI() { document.getElementById('repoWrapper').style.display = document.getElementById('reqType').value === 'repo' ? 'block' : 'none'; }
-        syncGitHub();
 
-        // Theme
+        // Theme Switcher
         document.getElementById('themeSwitcher').onclick = function() {
             document.body.classList.toggle('light-mode');
             this.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
         };
 
-        // Scroll Reveal
+        // Scroll Reveal Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
@@ -232,8 +231,8 @@
             document.getElementById('scrollBar').style.width = (winScroll / height) * 100 + "%";
         };
 
-        // Typewriter
-        const roles = ["Fullstack Developer", "Security Researcher", "AI Engineer"];
+        // Typewriter Effect
+        const roles = ["Fullstack Developer", "Security Researcher", "AI Engineer", "Systems Architect"];
         let r=0, c=0, del=false;
         function type() {
             const text = roles[r];
@@ -246,18 +245,40 @@
         }
         type();
 
-        // Icons
+        // Icone Stack Setup
         const r1 = ['python','js','docker','aws','bash','nextjs'];
         const r2 = ['react','kali','git','linux','cpp','ts'];
-        document.getElementById('techRow1').innerHTML = r1.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:45px">`).join('').repeat(2);
-        document.getElementById('techRow2').innerHTML = r2.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:45px">`).join('').repeat(2);
+        document.getElementById('techRow1').innerHTML = r1.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:45px" alt="${i}">`).join('').repeat(2);
+        document.getElementById('techRow2').innerHTML = r2.map(i => `<img src="https://skillicons.dev/icons?i=${i}" style="height:45px" alt="${i}">`).join('').repeat(2);
 
-        function sendMsg(m) {
-            const n = document.getElementById('userName').value || "User";
-            const req = document.getElementById('reqType').value === 'repo' ? document.getElementById('repoDrop').value : "Progetto";
-            let msg = `Ciao Luca, sono ${n}. Richiedo contatto per: ${req}`;
-            if(m === 'wa') window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
-            else window.location.href = `mailto:lucafinaldi3@gmail.com?subject=Inquiry&body=${msg}`;
+        // GitHub Integration
+        async function syncGitHub() {
+            try {
+                const res = await fetch('https://api.github.com/users/lxfx05/repos?sort=updated');
+                const repos = await res.json();
+                const drop = document.getElementById('repoDrop');
+                if(drop) drop.innerHTML = repos.map(r => `<option value="${r.name}">${r.name}</option>`).join('');
+            } catch(e) { console.error("GitHub API Error"); }
+        }
+        function toggleRepoUI() { 
+            const wrapper = document.getElementById('repoWrapper');
+            if(wrapper) wrapper.style.display = document.getElementById('reqType').value === 'repo' ? 'block' : 'none'; 
+        }
+        syncGitHub();
+
+        // Message Logic
+        function sendMsg(method) {
+            const name = document.getElementById('userName').value || "Interessato";
+            const type = document.getElementById('reqType').value;
+            let detail = type === 'repo' ? `audit sulla repo: ${document.getElementById('repoDrop').value}` : (type === 'new' ? "nuovo progetto" : "consulenza tecnica");
+            
+            let msg = `Ciao Luca, sono ${name}. Ti contatto dal tuo portfolio per un ${detail}.`;
+            
+            if(method === 'wa') {
+                window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
+            } else {
+                window.location.href = `mailto:lucafinaldi3@gmail.com?subject=Richiesta Collaborazione - ${name}&body=${msg}`;
+            }
         }
     </script>
 </body>
