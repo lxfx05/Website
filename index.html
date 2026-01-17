@@ -114,7 +114,7 @@
             <div class="card reveal">
                 <h3 style="font-family: 'Space Grotesk';">CodeBot Ai</h3>
                 <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 8px;">Refactoring e bug fixing automatizzato, con priorità alla riservatezza del codice e all'efficienza d'esecuzione</p>
-                <a href="https://codeai.vercel.app/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">Lancia demo</a>
+                <a href="https://codebot-ai.vercel.app/" target="_blank" style="display:block; padding:12px; background:var(--accent); border-radius:12px; text-align:center; text-decoration:none; color:white; font-size:0.8rem; font-weight:700; margin-top:20px;">Lancia demo</a>
             </div>
             <div class="card reveal">
                 <h3 style="font-family: 'Space Grotesk';">Free-Ai</h3>
@@ -145,7 +145,7 @@
             <div class="collab-header reveal">
                 <h2 style="font-family: 'Space Grotesk'; font-size: 2rem;">Lavoriamo Insieme</h2>
                 <p style="color: var(--text-dim); margin-top: 10px;">Dall'idea al deploy: un workflow scalabile e sicuro per i tuoi sistemi.</p>
-                
+
                 <div class="collab-steps">
                     <div class="step-item reveal">
                         <i class="fas fa-microchip"></i>
@@ -175,14 +175,14 @@
                     <option value="repo">Audit GitHub Repo</option>
                     <option value="consult">Consulenza Tecnica</option>
                 </select>
-                
+
                 <div id="repoWrapper" style="display:none;">
                     <label style="font-size: 0.75rem; color: var(--text-dim); margin-left: 5px;">Seleziona Repository</label>
                     <select id="repoDrop"></select>
                 </div>
 
                 <input type="text" id="userName" placeholder="Il tuo nome o Azienda">
-                
+
                 <button onclick="sendMsg('wa')" class="btn-ios" style="background:var(--wa-color);"><i class="fab fa-whatsapp"></i> WhatsApp</button>
                 <button onclick="sendMsg('mail')" class="btn-ios" style="background:var(--mail-color);"><i class="fas fa-envelope"></i> Email</button>
                 <p style="font-size: 0.7rem; color: var(--text-dim); text-align: center; margin-top: 15px;">Risposta garantita entro 24 ore lavorative.</p>
@@ -271,9 +271,9 @@
             const name = document.getElementById('userName').value || "Interessato";
             const type = document.getElementById('reqType').value;
             let detail = type === 'repo' ? `audit sulla repo: ${document.getElementById('repoDrop').value}` : (type === 'new' ? "nuovo progetto" : "consulenza tecnica");
-            
+
             let msg = `Ciao Luca, sono ${name}. Ti contatto dal tuo portfolio per un ${detail}.`;
-            
+
             if(method === 'wa') {
                 window.open(`https://wa.me/3924484032?text=${encodeURIComponent(msg)}`);
             } else {
