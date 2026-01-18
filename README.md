@@ -1,57 +1,43 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=050507&text=Luca%20Finaldi%20Portfolio&section=header&reversal=false&fontSize=40&fontColor=3b82f6&animation=twinkling" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=250&color=0a0a0c&text=Portfolio%20v2.0&section=header&reversal=false&fontSize=50&fontColor=3b82f6&animation=twinkling" />
 </p>
 
 <div align="center">
 
-# 🌐 Personal Portfolio & Systems Architecture
-**Modern, High-Performance, and Minimalist Portfolio Showcase**
+# 🌐 **Luca Finaldi Digital Showcase**
+### *High-Performance Web Architecture & Creative Design*
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white)](https://lxfx05.github.io/Website/)
-[![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)](https://github.com/lxfx05/Website/blob/main/LICENSE)
-
-<br />
-
-> "Progettazione di architetture sicure e sistemi di analisi predittiva on-premise per l’ottimizzazione del codice." ✨
+[![Live](https://img.shields.io/badge/Live_Site-Visit-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white)](https://lxfx05.github.io/Website/)
+[![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge)](https://lxfx05.github.io/Website/)
 
 </div>
 
 ---
 
-### 🚀 Core Technologies
+### 🚀 Stack Tecnologico
 <p align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/Font_Awesome-33DFAF?style=for-the-badge&logo=fontawesome&logoColor=white" />
+  <img src="https://img.shields.io/badge/Frontend-Tailwind_CSS-38bdf8?style=flat-square&logo=tailwind-css" />
+  <img src="https://img.shields.io/badge/Logic-JavaScript_ES6-f7df1e?style=flat-square&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Visual-Chart.js-ff6384?style=flat-square&logo=chartdotjs" />
+  <img src="https://img.shields.io/badge/Deployment-GitHub_Pages-222222?style=flat-square&logo=github" />
 </p>
 
 ---
 
-### 🛠️ Features & Architecture
-- **Apple-Inspired Design:** Interfaccia minimalista con supporto nativo per Dark/Light mode. 🌓
-- **Dynamic Skill Chart:** Visualizzazione radar delle competenze tramite Chart.js. 📊
-- **GitHub API Integration:** Sincronizzazione automatica dei repository e dei progetti recenti. 🔄
-- **Responsive Systems:** Ottimizzato per dispositivi mobile e desktop. 📱
+### 🛠️ Caratteristiche del Progetto
+- **Radar Competitivo:** Grafici interattivi per mostrare il livello di expertise. 📊
+- **Repo Scanner:** Integrazione dinamica dei progetti GitHub. 🔄
+- **Mobile First:** Architettura responsive fluida per Redmi/iOS. 📱
+- **Apple Aesthetics:** Bordi stondati, blur traslucidi e ombre morbide. 🍎
 
 ---
 
-### 🎨 Design System (Current Colors)
-| Element | Hex Code |
-| :--- | :--- |
-| **Accent Color** | `#3b82f6` (Blue) |
-| **Background** | `#050507` (Deep Dark) |
-| **Surface** | `rgba(22, 22, 28, 0.95)` |
-
----
-
-### 💻 Local Development
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/lxfx05/Website.git](https://github.com/lxfx05/Website.git)
-   ```
-2. Open `index.html` in your browser.
+### ⚙️ Architettura di Sistema
+| Modulo | Descrizione | Tecnologia |
+| :--- | :--- | :--- |
+| **UI/UX** | Design Minimalista & Dark Mode | CSS Custom Properties |
+| **Data Flow** | GitHub API Integration | Fetch API / JSON |
+| **Graphics** | Skill Representation | Canvas / Chart.js |
 
 ---
 *Developed by [Luca Finaldi](https://lxfx05.github.io/Website/)* 🏳️‍🌈
