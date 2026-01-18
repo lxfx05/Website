@@ -1,57 +1,58 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=250&color=0a0a0c&text=My%20Digital%20Portfolio&section=header&reversal=false&fontSize=50&fontColor=3b82f6&animation=twinkling" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=250&color=0a0a0c&text=Secure%20Pass%20Generator&section=header&reversal=false&fontSize=50&fontColor=3ecf8e&animation=twinkling" />
 </p>
 
 <div align="center">
 
-## ✨ **Where Clean Design Meets High-Performance Logic**
+# 🔐 **Advanced Password Generator**
+### *Entropy-Driven Security for the Modern Web*
 
-<a href="https://lxfx05.github.io/Website/">
-  <img src="https://img.shields.io/badge/CHECK%20IT%20OUT-LIVE%20DEMO-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white" />
-</a>
+[![Open App](https://img.shields.io/badge/Launch-Generator-3ecf8e?style=for-the-badge&logo=google-chrome&logoColor=white)](https://lxfx05.github.io/Password-Gen/)
 
 ---
 
-### 🌟 **What makes this project special?**
-This is a personal laboratory where I showcase my journey as a developer. Built with a focus on speed, security, and a premium "Apple-style" aesthetic. 🍎
+### 🛡️ **Why use this generator?**
+Security isn't just about complexity; it's about randomness. This tool creates high-entropy passwords locally in your browser, ensuring that your data stays private and your accounts stay protected.
 
 </div>
 
-### 🚀 **Built With**
+### 🚀 **Technology Stack**
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,js,tailwind,react,github,figma,vscode&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=js,html,css,tailwind,github,vscode&theme=dark" />
   </a>
 </p>
 
 ---
 
-### 🎨 **Key Highlights**
-* **Modern Visuals:** A sleek dark interface with smooth transitions and glassmorphism effects. 🌓
-* **Interactive Insights:** Dynamic charts that visualize my coding skills in real-time. 📊
-* **Always Fresh:** Automatically pulls my latest projects directly from GitHub. 🔄
-* **Fast & Responsive:** Optimized for a perfect experience on your phone, tablet, or PC. 📱
+### 💎 **Core Features**
+* **Local Processing:** No data ever leaves your device. Total privacy by design. 🔒
+* **Custom Complexity:** Toggle uppercase, numbers, and special characters with ease. ⚙️
+* **High Entropy:** Uses cryptographically secure pseudorandom number generators. 🧠
+* **Insta-Copy:** One-click functionality to get your password ready for use. 📋
 
 ---
 
-### 🛠️ **How to run it locally**
-1. **Clone the repo:** `git clone https://github.com/lxfx05/Website.git`
-2. **Step inside:** `cd Website`
-3. **Launch:** Open `index.html` in your browser! 🚀
+### 💻 **How to use**
+1. **Visit the Live Site:** Click the "Launch Generator" badge above.
+2. **Select Length:** Choose how long you want your password to be.
+3. **Toggle Options:** Pick your security layers.
+4. **Generate & Copy:** You're ready to go! 🚀
 
 ---
 
 <div align="center">
 
-### 🤝 **Let's Connect!**
-<a href="mailto:lucafinaldi3@gmail.com"><img src="https://img.shields.io/badge/Email_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-<a href="https://lxfx05.github.io/Website/"><img src="https://img.shields.io/badge/My_Website-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white" /></a>
+### 🤝 **Found a Bug?**
+Contributions and feedback are always welcome to make the web a safer place.
+
+<a href="mailto:lucafinaldi3@gmail.com"><img src="https://img.shields.io/badge/Report_Issue-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 
 <br/>
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Space+Grotesk&size=22&duration=2000&pause=1000&center=true&vCenter=true&width=500&color=3b82f6&lines=DESIGNED+FOR+EXCELLENCE;THANKS+FOR+STOPPING+BY" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Space+Grotesk&size=22&duration=2000&pause=1000&center=true&vCenter=true&width=600&color=3ecf8e&lines=SECURITY+FIRST+MINDSET;RANDOMNESS+IS+POWER" />
 
 </div>
 
 ---
-*Created with passion by [Luca Finaldi](https://lxfx05.github.io/Website/)* 🏳️‍🌈
+*Developed with focus by [Luca Finaldi](https://lxfx05.github.io/Website/)* 🏳️‍🌈
