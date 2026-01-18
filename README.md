@@ -4,29 +4,30 @@
 
 <div align="center">
 
-# ✨ **Welcome to My Creative Space**
-### *Where Clean Design Meets High-Performance Logic*
+## ✨ **Where Clean Design Meets High-Performance Logic**
 
-[![Visit My Website](https://img.shields.io/badge/Check_it_out-Live_Demo-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white)](https://lxfx05.github.io/Website/)
+<a href="https://lxfx05.github.io/Website/">
+  <img src="https://img.shields.io/badge/CHECK%20IT%20OUT-LIVE%20DEMO-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white" />
+</a>
 
 ---
 
 ### 🌟 **What makes this project special?**
-This isn't just a website—it's a personal laboratory where I showcase my journey as a developer. Built with a focus on speed, security, and a premium "Apple-style" aesthetic.
+This is a personal laboratory where I showcase my journey as a developer. Built with a focus on speed, security, and a premium "Apple-style" aesthetic. 🍎
 
 </div>
 
 ### 🚀 **Built With**
 <p align="center">
-<a href="https://skillicons.dev">
-<img src="https://skillicons.dev/icons?i=html,css,js,tailwind,react,chartjs,github,figma&theme=dark" />
-</a>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,tailwind,react,github,figma,vscode&theme=dark" />
+  </a>
 </p>
 
 ---
 
 ### 🎨 **Key Highlights**
-* **Modern Visuals:** A sleek dark interface with smooth transitions and glassmorphism effects. 🌗
+* **Modern Visuals:** A sleek dark interface with smooth transitions and glassmorphism effects. 🌓
 * **Interactive Insights:** Dynamic charts that visualize my coding skills in real-time. 📊
 * **Always Fresh:** Automatically pulls my latest projects directly from GitHub. 🔄
 * **Fast & Responsive:** Optimized for a perfect experience on your phone, tablet, or PC. 📱
@@ -34,18 +35,15 @@ This isn't just a website—it's a personal laboratory where I showcase my journ
 ---
 
 ### 🛠️ **How to run it locally**
-If you want to play with the code on your machine:
 1. **Clone the repo:** `git clone https://github.com/lxfx05/Website.git`
 2. **Step inside:** `cd Website`
-3. **Launch:** Just open `index.html` in any browser! 🚀
+3. **Launch:** Open `index.html` in your browser! 🚀
 
 ---
 
 <div align="center">
 
 ### 🤝 **Let's Connect!**
-Feel free to reach out for collaborations or just to say hi.
-
 <a href="mailto:lucafinaldi3@gmail.com"><img src="https://img.shields.io/badge/Email_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 <a href="https://lxfx05.github.io/Website/"><img src="https://img.shields.io/badge/My_Website-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white" /></a>
 
