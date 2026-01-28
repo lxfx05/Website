@@ -1,20 +1,34 @@
-# 🌑 Luca Finaldi | Minimalist Hub
+# 🌑 Luca Finaldi | Systems Architect & Developer
 
-### 🌐 [Visit Live Website](https://lxfx05.github.io/Website/)
+<p align="center">
+  <img src="https://img.shields.io/badge/Architect-Luca%20Finaldi-orange?style=for-the-badge&logo=github" alt="Architect">
+  <img src="https://img.shields.io/badge/Focus-Cybersecurity%20%26%20AI-white?style=for-the-badge" alt="Focus">
+  <img src="https://img.shields.io/badge/Shell-Fish-blue?style=for-the-badge&logo=fishshell" alt="Shell">
+</p>
 
 ---
 
 ## 🚀 Overview
-A sleek, single-page digital portfolio designed with a **"less is more"** philosophy. 🌌 This project focuses on high performance, dark aesthetics, and seamless responsiveness across all devices. 📱💻
+A high-performance, minimalist hub showcasing secure architectures and predictive analysis systems. Designed with a **"less is more"** philosophy, focusing on code optimization and on-premise efficiency. 🌌
 
-## 🛠️ Tech Stack & Workflow
-* **Core:** Single-file architecture using pure **HTML5**, **CSS3**, and **JavaScript**. 📄
-* **Environment:** Developed and managed on **Termux** using the **Fish Shell**. 🐟
-* **Performance:** Lightweight code for instant loading and clean UI/UX. ⚡
+### 🌐 [Live Portfolio](https://lxfx05.github.io/Website/)
 
-## 📥 Deployment & Usage
-To clone this repository directly into your environment, use:
+---
+
+## 🛠️ Tech Stack & Ecosystem
+
+This project is a lightweight, single-file gateway to my automated tools and security utilities. ⚡
+
+* **Core Engine:** Pure **HTML5**, **CSS3**, and **ES6+ JavaScript** for instant DOM rendering. 📄
+* **Dev Environment:** Managed via **Termux** on **Fish Shell** for a streamlined mobile-to-desktop workflow. 🐟
+* **Design Language:** **Orange Version** UI/UX—clean, high-contrast, and focused on technical clarity. ✨
+* **Key Projects:** Includes **CodeBot AI** (automated refactoring) and **Free-Ai** (DNS Sinkholing & Rate-Limiting). 🤖
+
+---
+
+## 📥 Deployment (Termux / Fish)
+
+To clone this hub into your local environment using the correct **Fish Shell** syntax, execute: 🐚
+
 ```fish
 printf 'git clone [https://github.com/lxfx05/Website.git](https://github.com/lxfx05/Website.git)'
-
-Made with ❤️ by Luca Finaldi 🏳️‍🌈
