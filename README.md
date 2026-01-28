@@ -40,4 +40,6 @@ My personal hub is a high-performance, single-page gateway designed with a **"le
 ### 📥 **Quick Deployment**
 To clone this repository directly into your **Fish Shell** environment, use: 🐚
 
-'git clone [https://github.com/lxfx05/Website.git](https://github.com/lxfx05/Website.git)'
+````
+git clone [https://github.com/lxfx05/Website.git](https://github.com/lxfx05/Website.git)
+````
