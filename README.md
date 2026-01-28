@@ -1,27 +1,50 @@
-# 🌑 Luca Finaldi | Systems Architect & Developer
+<div align="center">
 
+# 🌑 **Luca Finaldi | Minimalist Hub**
+### *Systems Architect & Full-Stack Developer*
 
-## 🚀 Overview
-A high-performance, minimalist hub showcasing secure architectures and predictive analysis systems. Designed with a **"less is more"** philosophy, focusing on code optimization and on-premise efficiency. 🌌
+<br />
 
-### 🌐 [Live Portfolio](https://lxfx05.github.io/Website/)
+![Architect](https://img.shields.io/badge/ROLE-SYSTEMS--ARCHITECT-orange?style=for-the-badge&logo=codeproject&logoColor=white)
+![Focus](https://img.shields.io/badge/FOCUS-SECURITY--%26--AI-white?style=for-the-badge)
+![Environment](https://img.shields.io/badge/ENV-TERMUX--FISH-blue?style=for-the-badge&logo=fishshell&logoColor=white)
 
----
+<br />
 
-## 🛠️ Tech Stack & Ecosystem
-
-This project is a lightweight, single-file gateway to my automated tools and security utilities. ⚡
-
-* **Core Engine:** Pure **HTML5**, **CSS3**, and **ES6+ JavaScript** for instant DOM rendering. 📄
-* **Dev Environment:** Managed via **Termux** on **Fish Shell** for a streamlined mobile-to-desktop workflow. 🐟
-* **Design Language:** **Orange Version** UI/UX—clean, high-contrast, and focused on technical clarity. ✨
-* **Key Projects:** Includes **CodeBot AI** (automated refactoring) and **Free-Ai** (DNS Sinkholing & Rate-Limiting). 🤖
+**"High-performance architecture, predictive analysis, and seamless digital aesthetics."**
 
 ---
 
-## 📥 Deployment (Termux / Fish)
+</div>
 
-To clone this hub into your local environment using the correct **Fish Shell** syntax, execute: 🐚
+### 🚀 **Portfolio Overview**
+My personal hub is a high-performance, single-page gateway designed with a **"less is more"** philosophy. It hosts my secure architectures and AI-driven tools, optimized for instant loading and mobile-to-desktop responsiveness. 🌌
+
+### 🛠️ **Featured Projects**
+
+* **CodeBot Ai:** Automated refactoring and bug fixing with code privacy. 🤖
+* **Free-Ai:** DNS Sinkholing and Rate-Limiting suite for LLM APIs. 🛡️
+* **Password Gen:** High-entropy cryptographic string generator. 🔐
+
+---
+
+### 🧰 **Tech Stack & Environment**
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,linux,git,github,vscode,docker&theme=dark" />
+  </a>
+</p>
+
+### 💎 **Key Capabilities**
+* **Architectural Design:** On-premise predictive analysis and secure system modeling. 🏗️
+* **Agile Workflow:** Developed entirely on **Termux** using **Fish Shell** for maximum portability. 🐟
+* **Code Optimization:** Zero-dependency philosophy for ultra-lightweight deployments. ⚡
+* **Security Audit:** Vulnerability assessment and performance tuning. 🛡️
+
+---
+
+### 📥 **Quick Deployment**
+To clone this repository directly into your **Fish Shell** environment, use: 🐚
 
 ```fish
 printf 'git clone [https://github.com/lxfx05/Website.git](https://github.com/lxfx05/Website.git)'
