@@ -1,11 +1,5 @@
 # 🌑 Luca Finaldi | Systems Architect & Developer
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Architect-Luca%20Finaldi-orange?style=for-the-badge&logo=github" alt="Architect">
-  <img src="https://img.shields.io/badge/Focus-Cybersecurity%20%26%20AI-white?style=for-the-badge" alt="Focus">
-  <img src="https://img.shields.io/badge/Shell-Fish-blue?style=for-the-badge&logo=fishshell" alt="Shell">
-</p>
-
 ---
 
 ## 🚀 Overview
