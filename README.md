@@ -5,12 +5,6 @@
 
 <br />
 
-![Architect](https://img.shields.io/badge/ROLE-SYSTEMS--ARCHITECT-orange?style=for-the-badge&logo=codeproject&logoColor=white)
-![Focus](https://img.shields.io/badge/FOCUS-SECURITY--%26--AI-white?style=for-the-badge)
-![Environment](https://img.shields.io/badge/ENV-TERMUX--FISH-blue?style=for-the-badge&logo=fishshell&logoColor=white)
-
-<br />
-
 **"High-performance architecture, predictive analysis, and seamless digital aesthetics."**
 
 ---
