@@ -1,6 +1,5 @@
 # 🌑 Luca Finaldi | Systems Architect & Developer
 
----
 
 ## 🚀 Overview
 A high-performance, minimalist hub showcasing secure architectures and predictive analysis systems. Designed with a **"less is more"** philosophy, focusing on code optimization and on-premise efficiency. 🌌
